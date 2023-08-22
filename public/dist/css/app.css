@@ -1,0 +1,147 @@
+.appname{
+    margin-left: 250px!important;
+    font-size: large!important;
+    color: white!important;
+}
+/* .arriere-plan{
+    background-image: url("../img/studentpi.png")!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: transparent;
+    opacity: 0.1em;
+   } */
+
+   /* Style etudiantsave */
+   legend {     
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 18px;
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    }
+  
+    .testbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    padding: 10px;
+    }
+    .formulairestudentsave {
+    width: 80%;
+    padding: 10px;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 0 8px #006622; 
+    opacity: 0.1em;
+    position: fixed;
+    bottom: 54px;
+    }
+    
+    input, select {
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    }
+    input {
+    width: calc(100% - 10px);
+    padding: 6px;
+    margin-bottom: -20px;
+    }
+    input[type="date"] {
+    padding: 4px 5px;
+    }
+    textarea {
+    width: calc(100% - 12px);
+    padding: 5px;
+    }
+    .item i, input::placeholder {
+    color:  green;
+    }
+    .item:hover i, input:hover::placeholder {
+    color:  #006622;
+    }
+    .checkbox input[type=checkbox] {
+    display:inline-block;
+    height:15px;
+    width:15px;
+    margin-right:5px;
+    vertical-align:text-top;
+    }
+    .item input:hover, .item select:hover, .item textarea:hover {
+    border: 1px solid transparent;
+    box-shadow: 0 0 3px 0  #006622;
+    color: #006622;
+    }
+    .item {
+    position: relative;
+    margin: 10px 0;
+    }
+    .item span {
+    color: red;
+    }
+    .colonne {
+    display:flex;
+    justify-content:space-between;
+    flex-direction:row;
+    flex-wrap:wrap;
+    }
+    .colonne div {
+    width:48%;
+    }
+    input[type=radio], input[type=checkbox]  {
+    display: none;
+    }
+    
+    .question span {
+    margin-left: 30px;
+    }
+    .question-answer label {
+    display: block;
+    }
+    
+    input[type=radio]:checked + label:before, label.radio:hover:before {
+    border: 2px solid  #006622;
+    }
+    
+    input[type=radio]:checked + label:after {
+    opacity: 1;
+    }
+    .flax {
+    display:flex;
+    justify-content:space-around;
+    }
+    .btn-block {
+    margin-top: 10px;
+    text-align: center;
+    }
+    button {
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px; 
+    background:  green;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    }
+    button:hover {
+    background:  #4A7C59;
+    }
+    @media (min-width: 568px) {
+    .name-item, .city-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    }
+    .name-item input, .name-item div {
+    width: calc(50% - 20px);
+    }
+    .name-item div input {
+    width:97%;}
+    .name-item div label {
+    display:block;
+    padding-bottom:5px;
+    }
+}
+/* end of Style etudiantsave */
