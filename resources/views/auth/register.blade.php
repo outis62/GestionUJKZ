@@ -1,7 +1,7 @@
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
+        <img src="{{ asset('dist/img/UJKZ.png') }}" width="130" class="logoujkzregister" height="130" alt="LogoESI">
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />

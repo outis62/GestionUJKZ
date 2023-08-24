@@ -20,7 +20,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="dist/img/armoirie.png" alt="Armoirie" height="80" width="80" style="border-radius: 10px;">
+    <img class="animation__wobble" src="dist/img/armoirie.png" alt="Armoirie" height="80" width="80" style="border-radius: 5px;">
   </div>
 
   <!-- Navbar -->

@@ -10,6 +10,28 @@
     color: transparent;
     opacity: 0.1em;
    } */
+   /* Login and register style */
+   .logoujkzregister{
+    margin-left: 130px;
+   }
+   .logoujkzlogin{
+    margin-left: 148px;
+   }
+   .loginedit{
+    border: 1px solid red;
+    border-radius: 8px;
+    background-image: url(../img/armoirie.png);
+    background-size: 240px;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    height: 450px!important;
+    opacity: 0.9em!important;
+   }
+   .logininput::placeholder{
+    color: green!important;
+   }
+   /* end of Login and register style */
 
    /* Style etudiantsave */
    legend {     
