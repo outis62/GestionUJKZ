@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +14,9 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <link rel="stylesheet" href="{{asset('dist/css/app.css')}}">
+  <link rel="stylesheet" href="{{asset('bootstrap/bootstrap-5.2.3-dist/css/bootstrap.min.css')}}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -28,10 +31,10 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" style="color: white;"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="#" class="nav-link text-white">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link appname"><strong>Bulletin-Univ</strong></a>
@@ -40,90 +43,11 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Navbar Search -->
-      <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-          <i class="fas fa-search"></i>
-        </a>
-        <div class="navbar-search-block">
-          <form class="form-inline">
-            <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Recherche" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </li>
 
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
+          <i class="far fa-bell" style="color: white;"></i>
           <span class="badge badge-warning navbar-badge">15</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -149,67 +73,57 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fas fa-expand-arrows-alt"></i>
+          <i class="fas fa-expand-arrows-alt"  style="color: white;"></i>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+<i class="fas fa-user" style="color: white;"></i><span class="pl-2" style="color: white;">{{ Auth::user()->name }}</span>
         </a>
-      </li>
+<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="{{ route('profile.edit') }}" class="dropdown-item">Profil</a>
+          <div class="dropdown-divider"></div>
+          <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">Déconnexion</a>
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+</div>
+</li>
     </ul>
   </nav>
   <!-- /.navbar -->
-
- 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/UJKZ.png" alt="UJKZ Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">UJKZ</span>
+    <a href="https://www.ujkz.bf" class="brand-link" style="text-decoration:none;">
+      <span class="brand-text font-weight-light" style="font-style: italic;">Université Joseph Ki-Zerbo</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="dist/img/user.png" class="img-circle elevation-2" alt="User Image">
-        </div>
+
         <div class="info">
-          <a href="#" class="d-block">Admin.simplon</a>
+        <a class="nav-link" data-toggle="dropdown" href="{{ route('profile.edit') }}">
+          <i class="fas fa-user" style="color: white;"></i>
+                    <span class="pl-2">{{ Auth::user()->name }}</span>
+                  </a>
         </div>
       </div>
-
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="{{url ('/dashboard')}}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Accueil
               </p>
             </a>
-            
           </li>
-         
           <li class="nav-item">
+          @if(Auth::user()->role != 'enseignant' && Auth::user()->role != 'etudiant')
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
@@ -217,82 +131,217 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            @endif
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-user nav-icon" style="color: orange;"></i>
-                  <p style="color: orange;">Admin.s</p>
-                </a>
+            <li class="nav-item">
+            @if(Auth::user()->role != 'admin' && Auth::user()->role != 'enseignant' && Auth::user()->role != 'etudiant')
+              <a href="{{route('register')}}" target="_blank" class="nav-link">
+              <i class="far fa-user nav-icon" style="color: orange;"></i>
+              <p style="color: orange;">Admin.s</p>
+              </a>
+            @endif
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route ('etudiantsave')}}" class="nav-link">
                   <i class="far fa-user nav-icon" style="color: orange;"></i>
                   <p style="color: orange;">Etudiant.e.s</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-user nav-icon" style="color: orange;"></i>
                   <p style="color: orange;">Enseignant.e.s</p>
                 </a>
-              </li>
+              </li> -->
+              <li class="nav-item">
+              <div id="main">
+              <a href="#" class="nav-link modal-trigger" onclick="modal_open()"><i class="far fa-user nav-icon" style="color: orange;"></i>
+                  <p style="color: orange;">Enseignant.e.s</p>
+              </a>
+              </div>
+              <div id="modal-overlay"></div>
+              <div id="register-modal">
+                <h2 style="color:green">Compte Enseignant.e.s</h2>
+                <form method="POST" action="{{route('ajoutenseignant')}}">
+                  <input type="text" name="nom" placeholder="Nom" />
+                  <input type="text" name="prenom" placeholder="Prenom" />
+                  <input type="text" name="telephone" placeholder="Telephone" />
+                  <input type="email" name="email" placeholder="Email" />
+                  <input type="password" name="password" placeholder="Password" />
+                  <select id="filiere" name="filiere" class="" required>
+                      @isset($filieres)
+                      @foreach($filieres as $filiere)
+                      <option value="{{$filiere->filiere}}">{{$filiere->filiere}}</option>
+                      @endforeach
+                      @endisset
+                  </select>
+
+                  <select name="matiere" class="" required>
+                    @isset($matieres)
+                    @foreach($matieres as $matiere)
+                            <option value="{{$matiere->matiere}}">{{$matiere->matiere}}</option>
+                        @endforeach
+                        @endisset
+                    </select>
+                    <label style="color: green;">Date d'adhesion</label>
+                  <input type="date" name="adhesion" placeholder="Annee d'adhesion" />
+                  <input type="hidden" name="role" value="enseignant" />
+                  <div id="modal-buttons">
+                    <button class="submit-button" type="submit">Save</button>
+                    <button id="button2id" style="border-radius: 10px; width: 70px; background:  orange;"  type="reset">Annuler</button>
+                    <button class="reset-button" type="reset" onclick="modal_close()">Fermer</button>
+                  </div>
+                </form>
+              </div>
+            </li>
             </ul>
           </li>
           <li class="nav-item">
+          @if(Auth::user()->role != 'enseignant' && Auth::user()->role != 'etudiant')
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Parametres
+                Paramètres
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            @endif
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon" style="color: orange;"></i>
-                  <p style="color: orange;">Annee Universitaire</p>
-                </a>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="open-btnanneeuniv"><i class="far fa-circle nav-icon" style="color: orange;"></i><p style="color: orange;">Année Universitaire</p></a>
+                <div class="modal-containeranneeuniv">
+                  <div class="modalm">
+                  <h2 class="modal-titlem text-center">Ajouter Année universitaire</h2>
+                  <form method="POST" action="{{route('anneeuniversitaire')}}" name="login_form">
+                  @csrf
+                  <input type="text" name="anneeuniversitaire" class="mt-4" placeholder="Saisir nouvelle Année Univ ici!" />
+                    <div class="close-wrapm mt-5">
+                    <button type="submit" style="border-radius: 10px; width: 70px; background:  green;">Save</button>
+                    <button id="button2id" style="border-radius: 10px; width: 70px; background:  orange;"  type="reset">Annuler</button>
+                    </form>
+                    <button type="buttonm" id="close-btnanneeuniv" style="background:  red;">Fermer</button>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon" style="color: orange;"></i>
-                  <p style="color: orange;">Cycles</p>
-                </a>
+              <a  class="nav-link" id="open-btncycle"><i class="far fa-circle nav-icon" style="color: orange;"></i><p style="color: orange;cursor: pointer;">Cycles</p></a>
+                <div class="modal-containercycle">
+                  <div class="modalm">
+                  <h2 class="modal-titlem text-center">Ajouter Cycle</h2>
+                  <form method="POST" action="{{route ('cycle')}}" name="login_form">
+                  @csrf
+                  <input type="text" name="cycle" class="mt-4" placeholder="Saisir nouveau cycle ici!" />
+                    <div class="close-wrapm mt-5">
+                    <button type="submit" style="border-radius: 10px; width: 70px; background:  green;">Save</button>
+                    <button id="button2id" style="border-radius: 10px; width: 70px; background:  orange;"  type="reset">Annuler</button>
+                    </form>
+                    <button type="buttonm" id="close-btncycle" style="background:  red;">Fermer</button>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon" style="color: orange;"></i>
-                  <p style="color: orange;">Filieres</p>
-                </a>
+              <a href="#" class="nav-link" id="open-btnm"><i class="far fa-circle nav-icon" style="color: orange;"></i><p style="color: orange;">Filières</p></a>
+                <div class="modal-containerm">
+                  <div class="modalm">
+                  <h2 class="modal-titlem text-center">Ajouter Filières</h2>
+                  <form method="POST" action="{{route('filiere')}}" name="login_form">
+                  @csrf
+                  <input type="text" class="mt-4" name="filiere" placeholder="Saisir nouvelle filière ici!" />
+                    <div class="close-wrapm mt-5">
+                    <button type="buttonm" style="border-radius: 10px; width: 70px; background:  green;">Save</button>
+                    <button id="button2id" style="border-radius: 10px; width: 70px; background:  orange;"  type="reset">Annuler</button>
+                  </form>
+                    <button type="buttonm" id="close-btnm" style="background:  red;">Fermer</button>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon" style="color: orange;"></i>
-                  <p style="color: orange;">Niveaux d'etudes</p>
-                </a>
+              <a href="#" class="nav-link" id="open-btnniveau"><i class="far fa-circle nav-icon" style="color: orange;"></i><p style="color: orange;">Niveaux d'étude</p></a>
+                <div class="modal-containerniveau">
+                  <div class="modalm">
+                  <h2 class="modal-titlem text-center">Ajouter Niveau d'étude</h2>
+                  <form method="POST" action="{{route('niveauetude')}}" name="login_form">
+                  @csrf
+                  <input type="text" class="mt-4" name="niveauetude" placeholder="Saisir niveau d'étude ici!" />
+                    <div class="close-wrapm mt-5">
+                    <button type="buttonm" style="border-radius: 10px; width: 70px; background:  green;">Save</button>
+                    <button id="button2id" style="border-radius: 10px; width: 70px; background:  orange;"  type="reset">Annuler</button>
+                  </form>
+                    <button type="buttonm" id="close-btnniveau" style="background:  red;">Fermer</button>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon" style="color: orange;"></i>
-                  <p style="color: orange;">Nationaltes</p>
-                </a>
+              <a href="#" class="nav-link" id="open-btnnational"><i class="far fa-circle nav-icon" style="color: orange;"></i><p style="color: orange;">Nationalités</p></a>
+                <div class="modal-containernational">
+                  <div class="modalm">
+                  <h2 class="modal-titlem text-center">Ajouter nationalités</h2>
+                  <form method="POST" action="{{route('nationalite')}}" name="login_form">
+                  @csrf
+                  <input type="text" class="mt-4" name="nationalite" placeholder="Saisir nouvelle nationalité ici!" />
+                    <div class="close-wrapm mt-5">
+                    <button type="buttonm" style="border-radius: 10px; width: 70px; background:  green;">Save</button>
+                    <button id="button2id" style="border-radius: 10px; width: 70px; background:  orange;"  type="reset">Annuler</button>
+                  </form>
+                    <button type="buttonm" id="close-btnnational" style="background:  red;">Fermer</button>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon" style="color: orange;"></i>
-                  <p style="color: orange;">Genres</p>
-                </a>
-              </li><li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon" style="color: orange;"></i>
-                  <p style="color: orange;">Semestres</p>
-                </a>
+              <a href="#" class="nav-link" id="open-btngenre"><i class="far fa-circle nav-icon" style="color: orange;"></i><p style="color: orange;">Genres</p></a>
+                <div class="modal-containergenre">
+                  <div class="modalm">
+                  <h2 class="modal-titlem text-center">Ajouter genre</h2>
+                  <form method="POST" action="{{route('genre')}}" name="login_form">
+                  @csrf
+                  <input type="text" class="mt-4" name="genre" placeholder="Saisir nouveau genre ici!" />
+                    <div class="close-wrapm mt-5">
+                    <button type="buttonm" style="border-radius: 10px; width: 70px; background:  green;">Save</button>
+                    <button id="button2id" style="border-radius: 10px; width: 70px; background:  orange;"  type="reset">Annuler</button>
+                  </form>
+                    <button type="buttonm" id="close-btngenre" style="background:  red;">Fermer</button>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon" style="color: orange;"></i>
-                  <p style="color: orange;">Matieres</p>
-                </a>
+              <a href="#" class="nav-link" id="open-btnsemestre"><i class="far fa-circle nav-icon" style="color: orange;"></i><p style="color: orange;">Sémètres</p></a>
+                <div class="modal-containersemestre">
+                  <div class="modalm">
+                  <h2 class="modal-titlem text-center">Ajouter sémèstres</h2>
+                  <form method="POST" action="{{route('semestre')}}" name="login_form">
+                  @csrf
+                  <input type="text" class="mt-4" name="semestre" placeholder="Saisir nouveau sémèstre ici!" />
+                    <div class="close-wrapm mt-5">
+                    <button type="buttonm" style="border-radius: 10px; width: 70px; background:  green;">Save</button>
+                    <button id="button2id" style="border-radius: 10px; width: 70px; background:  orange;"  type="reset">Annuler</button>
+                  </form>
+                    <button type="buttonm" id="close-btnsemestre" style="background:  red;">Fermer</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item">
+              <a href="#" class="nav-link" id="open-btnmatiere"><i class="far fa-circle nav-icon" style="color: orange;"></i><p style="color: orange;">Matières</p></a>
+                <div class="modal-containermatiere">
+                  <div class="modalm">
+                  <h2 class="modal-titlem text-center">Ajouter Matières</h2>
+                  <form method="POST" action="{{route('matiere')}}" name="login_form">
+                  @csrf
+                  <input type="text" class="mt-4" name="matiere" placeholder="Saisir nouvelle matière ici!" />
+                    <div class="close-wrapm mt-5">
+                    <button type="buttonm" style="border-radius: 10px; width: 70px; background:  green;">Save</button>
+                    <button id="button2id" style="border-radius: 10px; width: 70px; background:  orange;"  type="reset">Annuler</button>
+                  </form>
+                    <button type="buttonm" id="close-btnmatiere" style="background:  red;">Fermer</button>
+                    </div>
+                  </div>
+                </div>
               </li>
             </ul>
           </li>
@@ -306,10 +355,12 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+              @if(Auth::user()->role != 'enseignant' && Auth::user()->role != 'admin' && Auth::user()->role != 'etudiant')
                 <a href="#" class="nav-link">
                   <i class="far fa-user nav-icon" style="color: orange;"></i>
                   <p style="color: orange;">Admin.s</p>
                 </a>
+                @endif
               </li>
               <li class="nav-item">
                 <!-- doit rediriger vers modal ou on saisi cycle, filiere, niveau-enseigner, annee-adhesion, -->
@@ -334,23 +385,26 @@
             </a>
           </li>
           <li class="nav-item">
+          @if(Auth::user()->role != 'etudiant')
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-plus"></i>
               <p> Add notes</p>
             </a>
+            @endif
           </li>
-          <li class="nav-item">    
-            <a href="#" class="nav-link" onclick="event.preventDefault();
+          <li class="nav-item">
+            <a href="{{route('logout')}}" class="nav-link" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
               <i class="nav-icon fas fa-ban"></i>
-              <p> Deconnexion </p>
+              <p> Déconnexion </p>
             </a>
           </li>
-       <form id="logout-form" action="" method="POST" style="display: none;">
+       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
           </li>
         </ul>
+        <a href="https://www.ujkz.bf"><img src="dist/img/UJKZ-arriere.png" alt="UJKZ Logo" width="100" height="100" class="brand-image img-circ elevation-3" style="margin-left:65px!important; margin-top:20px!important;" /></a>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -363,20 +417,20 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-         
+
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
 
-  <div class="arriere-plan">
+  <div class="">
   @yield('page-content')
   </div>
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer text-center">
-    <strong>Copyright &copy; 2022-2023 <a href="https://www.ujkz.bf/" style="color: white;">Universite Joseph Ki-Zerbo</a>.</strong>
-    Tous droit reserves.
+    <strong>Copyright &copy; 2022-2023 <a href="https://www.ujkz.bf/" style="color: white;text-decoration:none;">Université Joseph Ki-Zerbo</a>.</strong>
+    Tous droit reservés.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0.0
     </div>
@@ -392,6 +446,7 @@
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -422,6 +477,9 @@
 <script src="dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="dist/js/appli.js"></script>
+<script src="bootstrap/bootstrap-5.2.3-dist/js/bootstrap.min.js"></script>
+<!-- <script src="bootstrap/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script> -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
 </body>

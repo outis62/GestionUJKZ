@@ -10,7 +10,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <p>Nombre de Filieres</p>
+                <p>Nombre de Filières</p>
                 <img class="" src="dist/img/student.png" alt="Education" height="60" width="60">
               </div>
               <div class="icon">
@@ -24,7 +24,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <p>Nombre de Matieres</p>
+                <p>Nombre de Matières</p>
                 <img class="" src="dist/img/student.png" alt="Education" height="60" width="60">
               </div>
               <div class="icon">
@@ -38,7 +38,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <p>Nombre d'etudiants par cycles</p>
+                <p>Nombre d'étudiants par cycles</p>
                 <img class="" src="dist/img/education.png" alt="Education" height="60" width="60">
               </div>
               <div class="icon">
@@ -52,7 +52,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <p>Nombre d'etudiants par filieres</p>
+                <p>Nombre d'étudiants par filieres</p>
                 <img class="" src="dist/img/education.png" alt="Education" height="60" width="60">
               </div>
               <div class="icon">
@@ -97,7 +97,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <p>Nombre d'etudiant.e.s</p>
+                <p>Nombre d'étudiant.e.s</p>
                 <img class="" src="dist/img/education.png" alt="Education" height="60" width="60">
               </div>
               <div class="icon">

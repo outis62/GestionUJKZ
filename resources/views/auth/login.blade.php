@@ -6,11 +6,11 @@
         @csrf
 
         <div>
-        <img src="{{ asset('dist/img/UJKZ.png') }}" width="100" class="logoujkzlogin" height="100" alt="LogoESI">
+        <a href="#"><img src="{{ asset('dist/img/armoirie.png') }}" width="80" class="logoujkzlogin" height="80" alt="LogoESI"></a>
         </div>
         <!-- Email Address -->
         <div>
-            <h4 style="color: green; text-align: center; font-weight: 700; position: relative; top: 40px;">CONNECTEZ-VOUS</h4>
+            <h4 style="color: black; text-align: center; font-weight: bold; position: relative; top: 40px;">CONNECTEZ-VOUS</h4>
             <!-- <x-input-label for="email" :value="__('Email')" /> -->
             <x-text-input id="email" class="block mt-1 w-full logininput" type="email" placeholder="Email"
              name="email"
@@ -37,14 +37,14 @@
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-danger-600 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm" style="color: blue;">{{ __('Se souvenir de moi') }}</span>
+                <!-- <span class="ml-2 text-sm" style="color: blue; margin-left: 20px!important; font-weight:bold;">{{ __('Se souvenir de moi') }}</span> -->
             </label>
         </div>
 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Mot de passe oublie?') }}
+                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mdpoublie" href="{{ route('password.request') }}">
+                    {{ __('Mot de passe oublié?') }}
                 </a>
             @endif
 
@@ -52,5 +52,13 @@
                 {{ __('Se connecter') }}
             </x-primary-button>
         </div>
+        @if(\App\Models\User::where('role', 'super-admin')->count() > 0)
+            <!-- Ne rien afficher si le rôle "super-admin" existe déjà -->
+        @else
+            <a href="{{ route('register') }}" class="underline" style="color: blue;margin-left:140px;">Créer un compte</a>
+        @endif
+
+
+
     </form>
 </x-guest-layout>
