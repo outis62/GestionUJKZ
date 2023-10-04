@@ -23,7 +23,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="dist/img/armoirie.png" alt="Armoirie" height="80" width="80" style="border-radius: 5px;">
+    <img class="" src="dist/img/armoirie.png" alt="Armoirie" height="80" width="80" style="border-radius: 5px;">
   </div>
 
   <!-- Navbar -->
@@ -331,7 +331,7 @@
                 <div class="modal-containermatiere">
                   <div class="modalm">
                   <h2 class="modal-titlem text-center">Ajouter Matières</h2>
-                  <form method="POST" action="{{route('matiere')}}" name="login_form">
+                  <form method="POST" action="{{route('matiere')}}">
                   @csrf
                   <input type="text" class="mt-4" name="matiere" placeholder="Saisir nouvelle matière ici!" />
                     <div class="close-wrapm mt-5">
@@ -339,6 +339,23 @@
                     <button id="button2id" style="border-radius: 10px; width: 70px; background:  orange;"  type="reset">Annuler</button>
                   </form>
                     <button type="buttonm" id="close-btnmatiere" style="background:  red;">Fermer</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item">
+              <a href="#" class="nav-link" id="open-btnrole"><i class="far fa-circle nav-icon" style="color: orange;"></i><p style="color: orange;">Roles</p></a>
+                <div class="modal-containerrole">
+                  <div class="modalm">
+                  <h2 class="modal-titlem text-center">Ajouter Roles</h2>
+                  <form method="POST" action="{{route('role')}}">
+                  @csrf
+                  <input type="text" class="mt-4" name="role" placeholder="Saisir nouveau role ici!" />
+                    <div class="close-wrapm mt-5">
+                    <button type="buttonm" style="border-radius: 10px; width: 70px; background:  green;">Save</button>
+                    <button id="button2id" style="border-radius: 10px; width: 70px; background:  orange;"  type="reset">Annuler</button>
+                  </form>
+                    <button type="buttonm" id="close-btnrole" style="background:  red;">Fermer</button>
                     </div>
                   </div>
                 </div>

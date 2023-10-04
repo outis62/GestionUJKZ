@@ -6,6 +6,7 @@ const opennational = document.getElementById('open-btnnational');
 const opengenre = document.getElementById('open-btngenre');
 const opensemestre = document.getElementById('open-btnsemestre');
 const openmatiere = document.getElementById('open-btnmatiere');
+const openrole = document.getElementById('open-btnrole');
 
 
 const close = document.getElementById('close-btnm');
@@ -16,6 +17,7 @@ const closenational = document.getElementById('close-btnnational');
 const closegenre = document.getElementById('close-btngenre');
 const closesemestre = document.getElementById('close-btnsemestre');
 const closematiere = document.getElementById('close-btnmatiere');
+const closerole = document.getElementById('close-btnrole');
 
 
 const modal = document.querySelector('.modal-containerm');
@@ -26,6 +28,7 @@ const modalnational = document.querySelector('.modal-containernational');
 const modalgenre = document.querySelector('.modal-containergenre');
 const modalsemestre = document.querySelector('.modal-containersemestre');
 const modalmatiere = document.querySelector('.modal-containermatiere');
+const modalrole = document.querySelector('.modal-containerrole');
 
 
 open.onclick = () => {
@@ -51,6 +54,9 @@ opensemestre.onclick = () => {
 }
 openmatiere.onclick = () => {
   modalmatiere.style.display = 'flex';
+}
+openrole.onclick = () => {
+  modalrole.style.display = 'flex';
 }
 
 
@@ -78,6 +84,10 @@ closesemestre.onclick = () => {
 closematiere.onclick = () => {
   modalmatiere.style.display = 'none';
 }
+closerole.onclick = () => {
+  modalrole.style.display = 'none';
+}
+
 
 // Enseignant modal script
 function modal_open() {

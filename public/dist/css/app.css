@@ -220,7 +220,8 @@ input[type=radio]:checked+label:after {
 .modal-containernational,
 .modal-containergenre,
 .modal-containersemestre,
-.modal-containermatiere {
+.modal-containermatiere,
+.modal-containerrole {
   position: fixed;
   top: 0;
   left: 0;
@@ -256,7 +257,8 @@ input[type=radio]:checked+label:after {
 #close-btnnational,
 #close-btngenre,
 #close-btnsemestre,
-#close-btnmatiere {
+#close-btnmatiere,
+#close-btnrole {
   border-radius: 10px;
   width: 90px;
 }

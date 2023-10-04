@@ -10,6 +10,7 @@ use App\Models\Genre;
 use App\Models\Matiere;
 use App\Models\Nationalite;
 use App\Models\Niveauetude;
+use App\Models\Role;
 use App\Models\Semestre;
 use Illuminate\Http\Request;
 
@@ -139,6 +140,21 @@ class HomeController extends Controller
 
         // Redirigez l'utilisateur ou renvoyez une réponse appropriée
         return redirect()->back()->with('success', 'matiere ajouté avec succès');
+    }
+    public function role(Request $request)
+    {
+        // Validez les données du formulaire si nécessaire
+        $request->validate([
+            'role' => 'required|string|max:255',
+        ]);
+
+        // Créez un nouveau cycle en utilisant les données du formulaire
+        $role = new Role();
+        $role->role = $request->input('role');
+        $role->save();
+
+        // Redirigez l'utilisateur ou renvoyez une réponse appropriée
+        return redirect()->back();
     }
 
     // public function getfiliere()

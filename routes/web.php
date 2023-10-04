@@ -43,6 +43,7 @@ Route::post('nationalite', [HomeController::class, 'nationalite'])->name('nation
 Route::post('genre', [HomeController::class, 'genre'])->name('genre');
 Route::post('semestre', [HomeController::class, 'semestre'])->name('semestre');
 Route::post('matiere', [HomeController::class, 'matiere'])->name('matiere');
+Route::post('role', [HomeController::class, 'role'])->name('role');
 
 Route::get('/get-filieres', [HomeController::class, 'getfiliere'])->name('getfiliere');
 Route::post('ajoutenseignant', [HomeController::class, 'ajoutenseignant'])->name('ajoutenseignant');
