@@ -44,11 +44,7 @@
         </div>
         <!-- Role -->
 <div class="mt-4">
-    <label for="role" class="block font-medium text-gray-700">Rôle</label>
-    <select id="role" name="role" class="block w-full mt-1 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-        <option value="super-admin">Super-Admin</option>
-        <option value="admin">Admin</option>
-    </select>
+    <input id="role" type="hidden" name="role" value="super-admin" class="block w-full mt-1 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
     <x-input-error :messages="$errors->get('role')" class="mt-2" />
 </div>
 

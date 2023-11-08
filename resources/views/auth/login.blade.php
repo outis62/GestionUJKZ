@@ -6,11 +6,11 @@
         @csrf
 
         <div>
-        <a href="#"><img src="{{ asset('dist/img/armoirie.png') }}" width="80" class="logoujkzlogin" height="80" alt="LogoESI"></a>
+        <a href="#"><img src="{{ asset('dist/img/logobu2.png') }}" width="80" class="logoujkzlogin" height="80" alt="LogoESI"></a>
         </div>
         <!-- Email Address -->
         <div>
-            <h4 style="color: black; text-align: center; font-weight: bold; position: relative; top: 40px;">CONNECTEZ-VOUS</h4>
+            <h4 class="text-center" style="font-weight: bold; color: lightseagreen; font-size:20px;">Bienvenue à Bulletin-Univ ☻</h4>
             <!-- <x-input-label for="email" :value="__('Email')" /> -->
             <x-text-input id="email" class="block mt-1 w-full logininput" type="email" placeholder="Email"
              name="email"
@@ -34,10 +34,10 @@
         </div>
 
         <!-- Remember Me -->
-        <div class="block mt-4">
+        <div class="block mt-4" style="margin-left: 10px!important;">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-danger-600 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <!-- <span class="ml-2 text-sm" style="color: blue; margin-left: 20px!important; font-weight:bold;">{{ __('Se souvenir de moi') }}</span> -->
+                <span class="ml-2 text-sm" style="color: blue; font-weight:bold;">{{ __('Se souvenir de moi') }}</span>
             </label>
         </div>
 
@@ -48,14 +48,14 @@
                 </a>
             @endif
 
-            <x-primary-button class="ml-3" style="background-color: green; margin-right: 130px;">
+            <x-primary-button class="ml-3" style="background-color: lightseagreen; margin-right: 130px;">
                 {{ __('Se connecter') }}
             </x-primary-button>
         </div>
         @if(\App\Models\User::where('role', 'super-admin')->count() > 0)
             <!-- Ne rien afficher si le rôle "super-admin" existe déjà -->
         @else
-            <a href="{{ route('register') }}" class="underline" style="color: blue;margin-left:140px;">Créer un compte</a>
+            <a href="{{ route('register') }}" class="underline" style="color: blue;margin-left:140px;"><i class="fa fa-user-plus" aria-hidden="true"></i>Créer un compte</a>
         @endif
 
 

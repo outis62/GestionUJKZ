@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Anneeuniversitaire;
 use App\Models\Cycle;
 use App\Models\Enseignant;
+use App\Models\Etudiant;
 use App\Models\Filiere;
 use App\Models\Genre;
 use App\Models\Matiere;
@@ -12,31 +13,59 @@ use App\Models\Nationalite;
 use App\Models\Niveauetude;
 use App\Models\Role;
 use App\Models\Semestre;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
 
-    public function etudiantsave()
+    public function home()
     {
-        return view('forme.etudiantsave');
+        $user = User::all();
+        $enseignant = Enseignant::count();
+        $etudiant = Etudiant::count();
+        $filiere = Filiere::count();
+        $matiere = Matiere::count();
+        $nationalite = Nationalite::count();
+        return view('home', [
+            'enseignant' => $enseignant,
+            'etudiant' => $etudiant,
+            'filiere' => $filiere,
+            'matiere' => $matiere,
+            'nationalite' => $nationalite,
+            'user' => $user,
+        ]);
     }
-    public function anneeuniversitaire(Request $request)
+    public function anneeuniversitaire()
     {
-        // Validez les données du formulaire si nécessaire
+        return view('parametre.anneeuniv');
+    }
+    public function ajoutanneeuniv(Request $request)
+    {
         $request->validate([
             'anneeuniversitaire' => 'required|string|max:255',
         ]);
 
-        // Créez une nouvelle annee en utilisant les données du formulaire
+        // Créez un nouveau cycle en utilisant les données du formulaire
         $anneeuniversitaire = new Anneeuniversitaire();
         $anneeuniversitaire->anneeuniversitaire = $request->input('anneeuniversitaire');
         $anneeuniversitaire->save();
 
         // Redirigez l'utilisateur ou renvoyez une réponse appropriée
-        return redirect()->back()->with('success', 'Anneé ajouté avec succès');
+        return redirect()->back()->with('success', 'anneeuniversitaire ajouté avec succès');
     }
-    public function cycle(Request $request)
+    public function listeanneeuniv()
+    {
+        $anneeuniv = Anneeuniversitaire::all();
+        return view('parametre.listeanneeuniv', [
+            'anneeuniv' => $anneeuniv,
+        ]);
+    }
+    public function cycle()
+    {
+        return view('parametre.cycle');
+    }
+    public function ajoutcycle(Request $request)
     {
         // Validez les données du formulaire si nécessaire
         $request->validate([
@@ -51,7 +80,18 @@ class HomeController extends Controller
         // Redirigez l'utilisateur ou renvoyez une réponse appropriée
         return redirect()->back()->with('success', 'Cycle ajouté avec succès');
     }
-    public function filiere(Request $request)
+    public function listecycle()
+    {
+        $cycle = Cycle::all();
+        return view('parametre.listecycle', [
+            'cycle' => $cycle,
+        ]);
+    }
+    public function filiere()
+    {
+        return view('parametre.filiere');
+    }
+    public function ajoutfiliere(Request $request)
     {
         // Validez les données du formulaire si nécessaire
         $request->validate([
@@ -60,143 +100,167 @@ class HomeController extends Controller
 
         // Créez un nouveau cycle en utilisant les données du formulaire
         $filiere = new Filiere();
-        $filiere->filiere = $request->input('filiere');
+        $filiere->filiere = $request->filiere;
         $filiere->save();
 
         // Redirigez l'utilisateur ou renvoyez une réponse appropriée
         return redirect()->back()->with('success', 'filiere ajouté avec succès');
     }
-    public function niveauetude(Request $request)
+    public function ListeFiliere()
     {
-        // Validez les données du formulaire si nécessaire
+        $filiere = Filiere::all();
+        return view('parametre.listefiliere', [
+            'filiere' => $filiere,
+        ]);
+    }
+    public function niveauetude()
+    {
+        return view('parametre.niveauetude');
+    }
+    public function ajoutniveauetude(Request $request)
+    {
+
         $request->validate([
             'niveauetude' => 'required|string|max:255',
         ]);
 
         // Créez un nouveau cycle en utilisant les données du formulaire
         $niveauetude = new Niveauetude();
-        $niveauetude->niveauetude = $request->input('niveauetude');
+        $niveauetude->niveauetude = $request->niveauetude;
         $niveauetude->save();
 
         // Redirigez l'utilisateur ou renvoyez une réponse appropriée
-        return redirect()->back()->with('success', 'niveau etude ajouté avec succès');
+        return redirect()->back()->with('success', 'niveau ajouté avec succès');
     }
-    public function nationalite(Request $request)
+    public function listeniveauetude()
     {
-        // Validez les données du formulaire si nécessaire
+        $niveauetude = Niveauetude::all();
+        return view('parametre.listeniveauetude', [
+            'niveauetude' => $niveauetude,
+        ]);
+    }
+    public function nationalite()
+    {
+        return view('parametre.nationalite');
+    }
+    public function ajoutnationalite(Request $request)
+    {
+
         $request->validate([
             'nationalite' => 'required|string|max:255',
         ]);
 
         // Créez un nouveau cycle en utilisant les données du formulaire
         $nationalite = new Nationalite();
-        $nationalite->nationalite = $request->input('nationalite');
+        $nationalite->nationalite = $request->nationalite;
         $nationalite->save();
 
         // Redirigez l'utilisateur ou renvoyez une réponse appropriée
-        return redirect()->back()->with('success', 'nationalite ajouté avec succès');
+        return redirect()->back()->with('success', 'niveau ajouté avec succès');
     }
-    public function genre(Request $request)
+    public function listenationalite()
     {
-        // Validez les données du formulaire si nécessaire
+        $nationalite = Nationalite::all();
+        return view('parametre.listenationalite', [
+            'nationalite' => $nationalite,
+        ]);
+    }
+    public function genre()
+    {
+        return view('parametre.genre');
+    }
+    public function ajoutgenre(Request $request)
+    {
+
         $request->validate([
             'genre' => 'required|string|max:255',
         ]);
-
-        // Créez un nouveau cycle en utilisant les données du formulaire
-        $genre = new Genre();
-        $genre->genre = $request->input('genre');
-        $genre->save();
-
-        // Redirigez l'utilisateur ou renvoyez une réponse appropriée
+        Genre::create([
+            'genre' => $request->genre,
+        ]);
         return redirect()->back()->with('success', 'genre ajouté avec succès');
     }
-    public function semestre(Request $request)
+    public function listegenre()
     {
-        // Validez les données du formulaire si nécessaire
+        $genre = Genre::all();
+        return view('parametre.listegenre', [
+            'genre' => $genre,
+        ]);
+    }
+    public function semestre()
+    {
+        return view('parametre.semestre');
+    }
+    public function ajoutsemestre(Request $request)
+    {
+
         $request->validate([
             'semestre' => 'required|string|max:255',
         ]);
-
-        // Créez un nouveau cycle en utilisant les données du formulaire
-        $semestre = new Semestre();
-        $semestre->semestre = $request->input('semestre');
-        $semestre->save();
-
-        // Redirigez l'utilisateur ou renvoyez une réponse appropriée
+        Semestre::create([
+            'semestre' => $request->semestre,
+        ]);
         return redirect()->back()->with('success', 'semestre ajouté avec succès');
     }
-    public function matiere(Request $request)
+    public function listesemestre()
     {
-        // Validez les données du formulaire si nécessaire
+        $semestre = Semestre::all();
+        return view('parametre.listesemestre', [
+            'semestre' => $semestre,
+        ]);
+    }
+    public function matiere()
+    {
+        return view('parametre.matiere');
+    }
+    public function ajoutmatiere(Request $request)
+    {
+
         $request->validate([
             'matiere' => 'required|string|max:255',
+            'coefficient' => 'required|integer|max:255',
         ]);
-
-        // Créez un nouveau cycle en utilisant les données du formulaire
-        $matiere = new Matiere();
-        $matiere->matiere = $request->input('matiere');
-        $matiere->save();
-
-        // Redirigez l'utilisateur ou renvoyez une réponse appropriée
+        Matiere::create([
+            'matiere' => $request->matiere,
+            'coefficient' => $request->coefficient,
+        ]);
         return redirect()->back()->with('success', 'matiere ajouté avec succès');
     }
-    public function role(Request $request)
+    public function listematiere()
     {
-        // Validez les données du formulaire si nécessaire
+        $matiere = Matiere::all();
+        return view('parametre.listematiere', [
+            'matiere' => $matiere,
+        ]);
+    }
+    public function role()
+    {
+        return view('parametre.role');
+    }
+    public function ajoutrole(Request $request)
+    {
+
         $request->validate([
             'role' => 'required|string|max:255',
         ]);
-
-        // Créez un nouveau cycle en utilisant les données du formulaire
-        $role = new Role();
-        $role->role = $request->input('role');
-        $role->save();
-
-        // Redirigez l'utilisateur ou renvoyez une réponse appropriée
+        Role::create([
+            'role' => $request->role,
+        ]);
         return redirect()->back();
     }
-
-    // public function getfiliere()
-    // {
-    //     $enseignants = Enseignant::all();
-    //     $filieres = Filiere::all();
-    //     $matieres = Matiere::all();
-
-    //     return view('forme.ajoutenseignant', [
-    //         'enseignants' => $enseignants,
-    //         'filieres' => $filieres,
-    //         'matieres' => $matieres,
-    //     ]);
-    // }
-    public function ajoutenseignant(Request $request)
+    public function listerole()
     {
-
-        $request->validate([
-            'nom' => 'required|string|max:255',
-            'prenom' => 'required|string|max:255',
-            'telephone' => 'required|string|max:255',
-            'email' => 'required|string|max:255',
-            'password' => 'required|string|max:255',
-            'filiere' => 'required|string|max:255',
-            'matiere' => 'required|string|max:255',
-            'adhesion' => 'required|string|max:255',
-            'role' => 'required|string|max:255',
+        $role = Role::all();
+        return view('parametre.listerole', [
+            'role' => $role,
         ]);
-
-        $enseignant = new enseignant();
-        $enseignant->nom = $request->input('nom');
-        $enseignant->prenom = $request->input('prenom');
-        $enseignant->telephone = $request->input('telephone');
-        $enseignant->email = $request->input('email');
-        $enseignant->password = $request->input('password');
-        $enseignant->filiere = $request->input('filiere');
-        $enseignant->matiere = $request->input('matiere');
-        $enseignant->adhesion = $request->input('adhesion');
-        $enseignant->role = $request->input('role');
-
-        $enseignant->save();
-        return redirect('/ajoutenseignant');
     }
 
+    public function classe()
+    {
+        $etudiants = Etudiant::all();
+        return view('note.classe', [
+            'etudiants' => $etudiants,
+        ]);
+    }
 }

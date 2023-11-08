@@ -29,5 +29,6 @@
                 {{ $slot }}
             </div>
         </div>
+        <script src="{{asset('dist/js/appli.js')}}"></script>
     </body>
 </html>

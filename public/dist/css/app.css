@@ -1,19 +1,19 @@
 .appname {
-  margin-left: 250px !important;
+  margin-left: 380px !important;
   font-size: large !important;
   color: white !important;
 }
 
-/* .arriere-plan{
-    background-image: url("../img/studentpi.png")!important;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: transparent;
-    opacity: 0.1em;
-   } */
 /* Login and register style */
 .logoujkzregister {
   margin-left: 130px;
+}
+
+.input-item {
+  background: #fff;
+  color: #333;
+  padding: 14.5px 0px 15px 9px;
+  border-radius: 5px 0px 0px 5px;
 }
 
 .mdpoublie {
@@ -27,7 +27,7 @@
 }
 
 .loginedit {
-  border: 1px solid red;
+  border: 1px solid #2e3267;
   border-radius: 8px;
   background-image: url(../img/UJKZ_flou2.png);
   background-size: 240px;
@@ -39,229 +39,239 @@
 }
 
 .logininput::placeholder {
-  color: green !important;
+  color: lightseagreen !important;
 }
 
 /* end of Login and register style */
 
 /* Style etudiantsave */
-legend {
-  font-family: Roboto, Arial, sans-serif;
-  font-size: 18px;
-  color: green;
-  font-weight: bold;
+
+.etudiantbody {
   text-align: center;
-}
-
-.testbox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: inherit;
-  padding: 10px;
-}
-
-.formulairestudentsave {
-  width: 80%;
-  padding: 3px;
-  border-radius: 6px;
-  background: #fff;
-  box-shadow: 0 0 8px #006622;
+  height: 550px;
+  overflow-x: hidden;
   position: fixed;
-  bottom: 55px;
+  margin-left: 200px;
+  top: 20px;
 }
 
-input,
-select {
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+.step-bar {
+  text-transform: uppercase;
+  color: white;
+  font-size: 0.8em;
+  margin-top: 40px;
 }
 
-input {
-  width: calc(100% - 10px);
-  padding: 3px;
-  margin-bottom: -20px;
-}
-
-input[type="date"] {
-  padding: 4px 5px;
-}
-
-textarea {
-  width: calc(100% - 12px);
-  padding: 5px;
-}
-
-.item i,
-input::placeholder {
-  color: green;
-}
-
-.item:hover i,
-input:hover::placeholder {
-  color: #006622;
-}
-
-.checkbox input[type=checkbox] {
+.step-bar li {
   display: inline-block;
-  height: 15px;
-  width: 15px;
-  margin-right: 5px;
-  vertical-align: text-top;
-}
-
-.item input:hover,
-.item select:hover,
-.item textarea:hover {
-  border: 1px solid transparent;
-  box-shadow: 0 0 3px 0 #006622;
-  color: #006622;
-}
-
-.item {
   position: relative;
-  margin: 10px 0;
+  margin: 0px 30px;
+  width: 120px;
 }
 
-.item span {
-  color: red;
+.step-bar .number {
+  transition: background-color 0.1s linear, color 0.1s linear;
+  display: inline-block;
+  position: relative;
+  color: #777;
+  background-color: #fff;
+  width: 20px;
+  padding: 8px 5px;
+  margin-bottom: 4px;
+  font-weight: 700;
+  z-index: 1;
 }
 
-.colonne {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  flex-wrap: wrap;
+.boardaccueil {
+  display: flex !important;
 }
 
-.colonne div {
-  width: 48%;
+.main-footer,
+.sidebar-secondary {
+  background-color: #6C757D !important;
 }
 
-input[type=radio],
-input[type=checkbox] {
+.content-wrapper {
+  background-color: #F5F5F9 !important;
+}
+
+.step-bar .line {
+  background-color: #fff;
+  width: 180px;
+  height: 5px;
+  position: absolute;
+  top: 15px;
+  right: 60px;
+  z-index: 0;
+}
+
+.step-bar .active {
+  background-color: lightseagreen;
+  color: #fff;
+}
+
+.register-form {
+  display: inline-block;
+  background: #fff;
+  padding: 10px 10px;
+  width: 400px;
+  text-align: center;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  position: relative;
+}
+
+.error {
+  border: 1px solid #E57373;
+  background-color: #FFEBEE;
+}
+
+.error-text {
+  text-align: left;
+  padding-left: 10px;
+  font-size: 0.7em;
+  color: #E57373;
+}
+
+.etudiant {
+  margin: 75px 0;
+  display: block;
+  color: #fff;
+  font-size: 1.15em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: 200;
+}
+
+.register-form h2 {
+  font-size: 1em;
+  color: #777;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.register-form input {
+  padding: 15px;
+  margin: 5px 0;
+  width: 260px;
+}
+
+.register-form input::placeholder {
+  color: #aaa;
+}
+
+.register-form input.error::placeholder {
+  color: #555;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 40px;
+  background-color: lightseagreen;
+  color: #fff;
+  margin: 25px 0 10px 0;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.button:hover {
+  background-color: #00897B;
+}
+
+.disabled {
+  background-color: #aaa;
+}
+
+.disabled:hover {
+  background-color: #aaa;
+  cursor: default;
+}
+
+.account-setup,
+.finish-step,
+.user-details {
+  transition: 1s all ease-in-out;
+  display: inline-block;
+  position: absolute;
+}
+
+.account-setup {
+  left: calc(50% - 175px);
+}
+
+.finish-step,
+.user-details {
+  left: 1400px;
+}
+
+.line {
+  transition: all 1s ease-in-out;
+  background: linear-gradient(to right, lightseagreen 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+}
+
+.active {
+  background-color: lightseagreen !important;
+}
+
+.nav-link:hover {
+  color: lightblue !important;
+}
+
+.decon {
+  background-color: rgb(96, 16, 16) !important;
+}
+
+.listeenseignant {
+  color: black !important;
+  background-color: lightseagreen !important;
+}
+
+.line-active {
+  background-position: left bottom;
+}
+
+.etudiantlabel label {
+  display: block;
+  text-align: left;
+  font-size: 0.8em;
+  padding-left: 5px;
+  color: #444;
+}
+
+.etudiantlabel input[type=checkbox] {
   display: none;
 }
 
-.question span {
-  margin-left: 30px;
+.accept-conditions {
+  margin-top: 20px;
 }
 
-.question-answer label {
-  display: block;
+.etudiantlabel input::placeholder {
+  color: green;
 }
 
-input[type=radio]:checked+label:before,
-label.radio:hover:before {
-  border: 2px solid #006622;
+.etudiantlabel input {
+  height: 35px;
 }
 
-input[type=radio]:checked+label:after {
-  opacity: 1;
+.etudiantlabel input[type=file],
+.etudiantlabel input[type=date] {
+  height: 45px;
 }
 
-.flax {
-  display: flex;
-  justify-content: space-around;
-}
-
-.btn-block {
-  margin-top: 10px;
-  text-align: center;
-}
-
-.buttonsaveetudiant {
-  width: 180px !important;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background: green;
-  font-size: 16px;
-  color: #fff;
-  cursor: pointer;
-}
-
-.buttonsaveetudiant:hover {
-  background: #4A7C59;
-}
-
-@media (min-width: 568px) {
-
-  .name-item,
-  .city-item {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  .name-item input,
-  .name-item div {
-    width: calc(50% - 20px);
-  }
-
-  .name-item div input {
-    width: 97%;
-  }
-
-  .name-item div label {
-    display: block;
-    padding-bottom: 5px;
+@media (max-width: 600px) {
+  .step-bar {
+    display: none;
   }
 }
+
 
 /* end of Style etudiantsave */
-
-/* Parametres modal style */
-.modal-containerm,
-.modal-containerniveau,
-.modal-containercycle,
-.modal-containeranneeuniv,
-.modal-containernational,
-.modal-containergenre,
-.modal-containersemestre,
-.modal-containermatiere,
-.modal-containerrole {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: none;
-}
-
-.modalm {
-  background: #d6d2d2;
-  padding: 1.5rem 2rem;
-  border-radius: 4px;
-  width: 20rem;
-}
-
-.modal-titlem {
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-.close-wrapm {
-  text-align: right;
-}
-
-#close-btnm,
-#close-btnniveau,
-#close-btncycle,
-#close-btnanneeuniv,
-#close-btnnational,
-#close-btngenre,
-#close-btnsemestre,
-#close-btnmatiere,
-#close-btnrole {
-  border-radius: 10px;
-  width: 90px;
-}
 
 /* Enseignant modal style */
 #modal-overlay {
@@ -324,4 +334,114 @@ input[type=radio]:checked+label:after {
   height: 30px;
   background-color: red;
   color: white;
+}
+
+
+/* Essai etudiant save */
+.etudiantsave {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #ffffff;
+  padding: 20px;
+  width: 450px;
+  border-radius: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.etudiantsave button {
+  align-self: flex-end;
+}
+
+.etudiantsave .inputForm {
+  border: 1.5px solid #ecedec;
+  border-radius: 10px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  transition: 0.2s ease-in-out;
+}
+
+.etudiantsave .input {
+  margin-left: 10px;
+  border-radius: 10px;
+  border: none;
+  width: 85%;
+  height: 100%;
+}
+
+.etudiantsave .input:focus {
+  outline: none;
+}
+
+.etudiantsave .inputForm:focus-within {
+  border: 1.5px solid #2d79f3;
+}
+
+.etudiantsave .flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.etudiantsave .flex-row>div>label {
+  font-size: 14px;
+  color: black;
+  font-weight: 400;
+}
+
+.etudiantsave .span {
+  font-size: 14px;
+  margin-left: 5px;
+  color: #2d79f3;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.etudiantsave .button-submit {
+  margin: 20px 0 10px 0;
+  background-color: #151717;
+  border: none;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 10px;
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.etudiantsave .button-submit:hover {
+  background-color: #252727;
+}
+
+.etudiantsave .p {
+  text-align: center;
+  color: black;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.etudiantsave .btn {
+  margin-top: 10px;
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  gap: 10px;
+  border: 1px solid #ededef;
+  background-color: white;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.etudiantsave .btn:hover {
+  border: 1px solid #2d79f3;
+  ;
 }
