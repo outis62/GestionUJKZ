@@ -1,5 +1,4 @@
 @extends('template')
-
 @section('page-content')
   <section class="content">
   <div class="container-fluid">
@@ -18,16 +17,16 @@
                         <th>Prénom</th>
                         <th>Téléphone</th>
                         <th>Email</th>
-                        <th>Nationalite</th>
                         <th>Cycle</th>
-                        <th>Filiere</th>
+                        <th>Filière</th>
+                        <th>Niveau</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                 @php
-            $compteur = 1;
-        @endphp
+                  $compteur = 1;
+                @endphp
                     @foreach ($etudiant as $etudiant)
                     <tr>
                         <td>{{ $compteur }}</td>
@@ -35,26 +34,24 @@
                         <td>{{ $etudiant->prenom}}</td>
                         <td>{{ $etudiant->telephone }}</td>
                         <td>{{ $etudiant->email }}</td>
-                        <td>{{ $etudiant->nationalite }}</td>
-                        <td>{{ $etudiant->cycle }}</td>
-                        <td>{{ $etudiant->filiere }}</td>
+                        <td>{{ $etudiant->cycle->cycle }}</td>
+                        <td>{{ $etudiant->filiere->filiere }}</td>
+                        <td>{{ $etudiant->niveauetude->niveauetude }}</td>
                         <td style="width: 130px;">
                             <a href="javascript:void(0);" class="btn btn-info"><i class="fa fa-info"></i></a>
                             <a href="javascript:void(0);" class="btn btn-success d-iniline"><i class="fa fa-pen"></i></a>
                             <a href="javascript:void(0);" class="btn btn-danger d-inline mt-1 delete"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
-                    @php
+                @php
                   $compteur++;
                 @endphp
                     @endforeach
-
                 </tbody>
             </table>
             </div>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
-    <!-- /.content -->
     @endsection

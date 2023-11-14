@@ -13,4 +13,8 @@ class Matiere extends Model
         'matiere',
         'coefficient',
     ];
+    public function enseignant()
+    {
+        return $this->hasMany(Enseignant::class);
+    }
 }

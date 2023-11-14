@@ -27,20 +27,18 @@
                         <td>{{ $compteur }}</td>
                         <td>{{ $filiere->filiere }}</td>
                         <td style="width: 130px;">
-                            <a href="javascript:void(0);" class="btn btn-danger d-inline mt-1 delete"><i class="fa fa-trash"></i></a>
+                            <a href="{{ route('delete',$filiere->id) }}" class="btn btn-danger d-inline mt-1"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @php
                   $compteur++;
                 @endphp
                     @endforeach
-
                 </tbody>
             </table>
             </div>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
-    <!-- /.content -->
     @endsection

@@ -11,7 +11,6 @@ use App\Models\Genre;
 use App\Models\Matiere;
 use App\Models\Nationalite;
 use App\Models\Niveauetude;
-use App\Models\Role;
 use App\Models\Semestre;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -46,12 +45,9 @@ class HomeController extends Controller
             'anneeuniversitaire' => 'required|string|max:255',
         ]);
 
-        // Créez un nouveau cycle en utilisant les données du formulaire
         $anneeuniversitaire = new Anneeuniversitaire();
         $anneeuniversitaire->anneeuniversitaire = $request->input('anneeuniversitaire');
         $anneeuniversitaire->save();
-
-        // Redirigez l'utilisateur ou renvoyez une réponse appropriée
         return redirect()->back()->with('success', 'anneeuniversitaire ajouté avec succès');
     }
     public function listeanneeuniv()
@@ -67,17 +63,15 @@ class HomeController extends Controller
     }
     public function ajoutcycle(Request $request)
     {
-        // Validez les données du formulaire si nécessaire
+
         $request->validate([
             'cycle' => 'required|string|max:255',
         ]);
 
-        // Créez un nouveau cycle en utilisant les données du formulaire
         $cycle = new Cycle();
         $cycle->cycle = $request->input('cycle');
         $cycle->save();
 
-        // Redirigez l'utilisateur ou renvoyez une réponse appropriée
         return redirect()->back()->with('success', 'Cycle ajouté avec succès');
     }
     public function listecycle()
@@ -93,17 +87,14 @@ class HomeController extends Controller
     }
     public function ajoutfiliere(Request $request)
     {
-        // Validez les données du formulaire si nécessaire
+
         $request->validate([
             'filiere' => 'required|string|max:255',
         ]);
 
-        // Créez un nouveau cycle en utilisant les données du formulaire
         $filiere = new Filiere();
         $filiere->filiere = $request->filiere;
         $filiere->save();
-
-        // Redirigez l'utilisateur ou renvoyez une réponse appropriée
         return redirect()->back()->with('success', 'filiere ajouté avec succès');
     }
     public function ListeFiliere()
@@ -124,12 +115,9 @@ class HomeController extends Controller
             'niveauetude' => 'required|string|max:255',
         ]);
 
-        // Créez un nouveau cycle en utilisant les données du formulaire
         $niveauetude = new Niveauetude();
         $niveauetude->niveauetude = $request->niveauetude;
         $niveauetude->save();
-
-        // Redirigez l'utilisateur ou renvoyez une réponse appropriée
         return redirect()->back()->with('success', 'niveau ajouté avec succès');
     }
     public function listeniveauetude()
@@ -150,12 +138,9 @@ class HomeController extends Controller
             'nationalite' => 'required|string|max:255',
         ]);
 
-        // Créez un nouveau cycle en utilisant les données du formulaire
         $nationalite = new Nationalite();
         $nationalite->nationalite = $request->nationalite;
         $nationalite->save();
-
-        // Redirigez l'utilisateur ou renvoyez une réponse appropriée
         return redirect()->back()->with('success', 'niveau ajouté avec succès');
     }
     public function listenationalite()
@@ -231,36 +216,6 @@ class HomeController extends Controller
         $matiere = Matiere::all();
         return view('parametre.listematiere', [
             'matiere' => $matiere,
-        ]);
-    }
-    public function role()
-    {
-        return view('parametre.role');
-    }
-    public function ajoutrole(Request $request)
-    {
-
-        $request->validate([
-            'role' => 'required|string|max:255',
-        ]);
-        Role::create([
-            'role' => $request->role,
-        ]);
-        return redirect()->back();
-    }
-    public function listerole()
-    {
-        $role = Role::all();
-        return view('parametre.listerole', [
-            'role' => $role,
-        ]);
-    }
-
-    public function classe()
-    {
-        $etudiants = Etudiant::all();
-        return view('note.classe', [
-            'etudiants' => $etudiants,
         ]);
     }
 }

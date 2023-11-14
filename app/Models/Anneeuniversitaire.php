@@ -12,4 +12,8 @@ class Anneeuniversitaire extends Model
     protected $fillable = [
         'anneeuniversitaire',
     ];
+    public function enseignant()
+    {
+        return $this->hasMany(Enseignant::class);
+    }
 }

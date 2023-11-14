@@ -39,4 +39,26 @@ class EtudiantRequest extends FormRequest
             'photo' => 'required|file|max:255',
         ];
     }
+    public function messages()
+    {
+        return [
+
+            'nom.required' => 'le champ nom est requis',
+            'prenom.required' => 'le champ prenom est requis',
+            'datenaissance.required' => 'le champ date de naissance est requis',
+            'genre.required' => 'le champ genre est requis',
+            'cycle.required' => 'le champ cycle est requis',
+            'niveauetude.required' => 'le champ niveau etude est requis',
+            'email.required' => 'le champ email est requis',
+            'password.required' => 'le champ mot de passe est requis',
+            'telephone.required' => 'le champ telephone est requis',
+            'photo.required' => 'le champ photo est requis',
+            'matricule.required' => 'le champ matricule est requis',
+            'nationalite' => 'le champ nationalite est requis',
+            'anneeuniversitaire.required' => 'le champ annee universitaire est requis',
+            'confirmerpassword.required' => 'le champ confirmer mot de passe est requis',
+            'filiere.required' => 'le champ filiere est requis',
+
+        ];
+    }
 }

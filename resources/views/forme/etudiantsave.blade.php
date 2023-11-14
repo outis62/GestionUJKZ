@@ -1,5 +1,4 @@
 @extends('template')
-
 @section('page-content')
   <section class="content">
   <div class="container-fluid">
@@ -19,92 +18,99 @@
           <form class="form etudiantsave" action="{{route('ajoutetudiant')}}" method="POST">
           @csrf
       <div class="inputForm">
-        <i class="fa fa-user" style="color: lightseagreen;"></i>
-        <input type="text" name="nom" class="input" placeholder="Nom" value="{{ old('nom') }}" required>
+      <i class="fa fa-user text-black"></i>
+      <label for="nom" class="mt-2 ms-2 text-black">Nom</label>
+        <input type="text" name="nom" class="input"required>
       </div>
       <div class="inputForm">
-        <i class="fa fa-user" style="color: lightseagreen;"></i>
-        <input type="text" name="prenom" class="input" placeholder="Prénom" value="{{ old('prenom') }}" required>
+      <i class="fa fa-user text-black"></i>
+      <label for="prenom" class="mt-2 ms-2 text-black">Prénom</label>
+        <input type="text" name="prenom" class="input" required>
       </div>
       <div class="inputForm">
-        <i class="fa fa-phone" style="color: lightseagreen;"></i>
-        <input type="number" name="telephone" class="input" placeholder="Téléphone" required>
+        <i class="fa fa-phone text-black"></i>
+        <label for="telphone" class="mt-2 ms-2 text-black">Téléphone</label>
+        <input type="number" name="telephone" class="input" required>
       </div>
       <div class="inputForm">
-        <label for="genre" style="color: lightseagreen;">Genre</label>
-      <select name="genre" id="genre" class="form-control" style="background-color: white; color:black;">
+        <label for="genre" class="text-black">Genre</label>
+      <select name="genre_id" id="genre" class="form-control" style="background-color: white; color:black;">
     @foreach ($genre as $genre)
-        <option value="{{ $genre->genre }}">{{ $genre->genre }}</option>
+        <option value="{{ $genre->id }}">{{ $genre->genre }}</option>
     @endforeach
 </select>
       </div>
       <div class="inputForm">
-      <label for="datenaissance" style="color: lightseagreen;">Date naissance</label>
+      <label for="datenaissance" class="text-black">Date naissance</label>
         <i class="fa fa-calendar-days" style="color: lightseagreen;"></i>
-        <input type="date" id="datenaissance" name="datenaissance" class="input" placeholder="Date de naissance" required>
+        <input type="date" id="datenaissance" name="datenaissance" class="input" required>
       </div>
       <div class="inputForm">
-        <i class="fa fa-list-ol" style="color: lightseagreen;"></i>
-        <input type="number" name="matricule" class="input" placeholder="Matricule" required>
+        <i class="fa fa-list-ol text-black"></i>
+        <label for="matricule" class="mt-2 ms-2 text-black">Matricule</label>
+        <input type="number" name="matricule" class="input" required>
       </div>
       <div class="inputForm">
-      <label for="cycle" style="color: lightseagreen;">Cycle</label>
-      <select name="cycle" id="cycle" class="form-control" style="background-color: white; color:black;">
+      <label for="cycle" class="text-black">Cycle</label>
+      <select name="cycle_id" id="cycle" class="form-control" style="background-color: white; color:black;">
     @foreach ($cycle as $cycle)
-        <option value="{{ $cycle->cycle }}">{{ $cycle->cycle }}</option>
+        <option value="{{ $cycle->id }}">{{ $cycle->cycle }}</option>
     @endforeach
 </select>
       </div>
       <div class="inputForm">
-      <label for="filiere" style="color: lightseagreen;">Filière</label>
-      <select name="filiere" id="filiere" class="form-control" style="background-color: white; color:black;">
+      <label for="filiere" class="text-black">Filière</label>
+      <select name="filiere_id" id="filiere" class="form-control" style="background-color: white; color:black;">
     @foreach ($filiere as $filiere)
-        <option value="{{ $filiere->filiere }}">{{ $filiere->filiere }}</option>
+        <option value="{{ $filiere->id }}">{{ $filiere->filiere }}</option>
     @endforeach
 </select>
       </div>
       <div class="inputForm">
-      <label for="niveauetude" style="color: lightseagreen;">Niveau étude</label>
-      <select name="niveauetude" id="niveauetude" class="form-control" style="background-color: white; color:black;">
+      <label for="niveauetude" class="text-black">Niveau étude</label>
+      <select name="niveauetude_id" id="niveauetude" class="form-control" style="background-color: white; color:black;">
     @foreach ($niveauetude as $niveauetude)
-        <option value="{{ $niveauetude->niveauetude }}">{{ $niveauetude->niveauetude }}</option>
+        <option value="{{ $niveauetude->id }}">{{ $niveauetude->niveauetude }}</option>
     @endforeach
 </select>
       </div>
       <div class="inputForm">
-      <label for="anneeuniversitaire" style="color: lightseagreen;">Année Univ</label>
-      <select name="anneeuniversitaire" id="anneeuniversitaire" class="form-control" style="background-color: white; color:black;">
+      <label for="anneeuniversitaire" class="text-black">Année Univ</label>
+      <select name="anneeuniversitaire_id" id="anneeuniversitaire" class="form-control" style="background-color: white; color:black;">
     @foreach ($anneeuniversitaire as $anneeuniversitaire)
-        <option value="{{ $anneeuniversitaire->anneeuniversitaire }}">{{ $anneeuniversitaire->anneeuniversitaire }}</option>
+        <option value="{{ $anneeuniversitaire->id }}">{{ $anneeuniversitaire->anneeuniversitaire }}</option>
     @endforeach
 </select>
       </div>
       <div class="inputForm">
-      <label for="nationalite" style="color: lightseagreen;">Nationalité</label>
-      <select name="nationalite" id="nationalite" class="form-control" style="background-color: white; color:black;">
+      <label for="nationalite" class="text-black">Nationalité</label>
+      <select name="nationalite_id" id="nationalite" class="form-control" style="background-color: white; color:black;">
     @foreach ($nationalite as $nationalite)
-        <option value="{{ $nationalite->nationalite }}">{{ $nationalite->nationalite }}</option>
+        <option value="{{ $nationalite->id }}">{{ $nationalite->nationalite }}</option>
     @endforeach
 </select>
       </div>
       <div class="inputForm">
-        <i class="fa fa-envelope" style="color: lightseagreen;"></i>
-        <input type="email" name="email" class="input" placeholder="Email" required>
+        <i class="fa fa-envelope text-black"></i>
+        <label for="email" class="mt-2 ms-2 text-black">Email</label>
+        <input type="email" name="email" class="input" required>
       </div>
       <div class="inputForm">
-        <i class="fa fa-key" style="color: lightseagreen;"></i>
-        <input type="password" name="password" class="input" placeholder="Mot de passe" required>
+        <i class="fa fa-key text-black"></i>
+        <label for="password" class="mt-2 ms-2 text-black">Mot de passe</label>
+        <input type="password" name="password" class="input" required>
         <i class="fa fa-eye" style="color: lightseagreen;"></i>
       </div>
       <div class="inputForm">
-        <i class="fa fa-lock" style="color: lightseagreen;"></i>
-        <input type="password" name="confirmerpassword" class="input" placeholder="confirmer Mot de passe" required>
+        <i class="fa fa-lock text-black"></i>
+        <label for="confirmerpassword" class="mt-2 ms-2 text-black">Confirmer mdp</label>
+        <input type="password" name="confirmerpassword" class="input" required>
         <i class="fa fa-eye" style="color: lightseagreen;"></i>
       </div>
       <div class="inputForm">
-      <label for="photo" style="color: lightseagreen;">Photo</label>
-        <i class="fa fa-image" style="color: lightseagreen;"></i>
-        <input type="file" id="photo" class="mt-1 ms-2" name="photo" class="input" placeholder="Photo" required>
+      <label for="photo" class="text-black">Photo</label>
+        <i class="fa fa-image mb-1 ms-2" class="text-black"></i>
+        <input type="file" id="photo" class="mt-1 ms-2 input" name="photo" required>
       </div>
     <button class="button-submit fw-bold" type="submit" style="background-color: lightseagreen;">Enregistrer <i class="fa fa-cloud"></i></button>
 </form>

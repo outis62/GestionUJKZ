@@ -80,7 +80,6 @@ margin-top: 5px;
 }
 
 </style>
-<!-- Footer -->
 <section class="container-fluid" id="footer">
 		<div class="container">
 			<div class="row text-center text-xs-center text-sm-left text-md-left">
@@ -106,7 +105,6 @@ margin-top: 5px;
 						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Suivi mobile</a></li>
 						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Notification</a></li>
 						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>?</a></li>
-            <li>
 					</ul>
 				</div>
 			</div>
@@ -124,13 +122,11 @@ margin-top: 5px;
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
-<p>
-<hr>
-  Powered by <a href="javascript:void();">Simplon Burkina Faso</a>  P04® <br>
-  Copyright &copy 2023 <a href="javascript:void();">Universite Joseph Ki Zerbo</a>. Bulletin Univ.<br>
+			<hr>
+  				Powered by <a href="javascript:void();">Simplon Burkina Faso</a>  P04® <br>
+  				Copyright &copy 2023 <a href="javascript:void();">Universite Joseph Ki Zerbo</a>. Bulletin Univ.<br>
 				</div>
 				</hr>
 			</div>
 		</div>
 	</section>
-	<!-- ./Footer -->

@@ -20,8 +20,8 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-white">
               <div class="inner">
-                <p>Total de Filières</p>
-                <i class="fa fa-chess-board" style="color: lightseagreen;"></i>  <b>#{{$filiere}}</b>
+                <p>Filières</p>
+                <i class="fa fa-chalkboard" style="color: lightseagreen;"></i>  <b>#{{$filiere}}</b>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -32,8 +32,8 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-white">
               <div class="inner">
-                <p>Total de Matières</p>
-                <i class="fa fa-chess-board" style="color: lightseagreen;"></i>  <b>#{{$matiere}}</b>
+                <p>Matières</p>
+                <i class="fa fa-chalkboard" style="color: lightseagreen;"></i>  <b>#{{$matiere}}</b>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -70,8 +70,8 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-white">
               <div class="inner">
-                <p>Total d'Admin.s</p>
-                <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i>  <b># {{ $user->where('role', 'admin')->count() }}</b>
+                <p>Admin.s</p>
+                <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i>  <b>#{{ $user->where('role', 'admin')->count() }}</b>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -82,7 +82,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-white">
               <div class="inner">
-                <p>Total d'enseignant.e.s</p>
+                <p>Enseignant.e.s</p>
                 <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i>  <b>#{{$enseignant}}</b>
               </div>
               <div class="icon">
@@ -94,7 +94,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-white">
               <div class="inner">
-                <p>Total d'étudiant.e.s</p>
+                <p>Etudiant.e.s</p>
                 <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i>  <b>#{{$etudiant}}</b>
               </div>
               <div class="icon">
@@ -106,13 +106,13 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-white">
               <div class="inner">
-                <p>Total de Nationalité</p>
+                <p>Nationalité</p>
                 <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i>  <b>#{{$nationalite}}</b>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="{{route('listenationalite')}}" class="small-box-footer text-white">Voir plus<i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{route('listenationalite')}}" class="small-box-footer text-white">Voir plus <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
         </div>

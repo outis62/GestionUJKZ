@@ -12,4 +12,8 @@ class Cycle extends Model
     protected $fillable = [
         'cycle',
     ];
+    public function enseignant()
+    {
+        return $this->hasMany(Enseignant::class);
+    }
 }

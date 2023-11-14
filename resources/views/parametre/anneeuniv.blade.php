@@ -20,7 +20,7 @@
                 <p class="fw-bold fs-6" style="color: lightseagreen;">Ajouter une Année Universitaire</p>
                 <form action="{{route('ajoutanneeuniv')}}" method="POST">
                 @csrf
-                  <input type="text" class="form-control" name="anneeuniversitaire" placeholder="Année au format 202X-202X" style="background-color: white; margin-bottom: 10px; color: black;" required>
+                  <input type="text" class="form-control d-inline" name="anneeuniversitaire" placeholder="Année au format 202X-202X" style="background-color: white; margin-bottom: 10px; color: black;" required>
                   <input type="submit" class="btn btn-success" value="Enregistrer">
                 </form>
               </div>

@@ -23,7 +23,7 @@
                 <p class="fw-bold fs-6" style="color: lightseagreen;">Ajouter une filière</p>
                 <form action="{{route('ajoutfiliere')}}" method="POST">
                 @csrf
-                  <input type="text" class="form-control" name="filiere" placeholder="Saisir nouvelle filière" style="background-color: white; margin-bottom: 10px; color: black;" required>
+                  <input type="text" class="form-control d-inline" name="filiere" placeholder="Saisir nouvelle filière" style="background-color: white; margin-bottom: 10px; color: black;" required>
                   <input type="submit" class="btn btn-success" value="Enregistrer">
                 </form>
               </div>

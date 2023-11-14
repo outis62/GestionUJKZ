@@ -23,7 +23,7 @@
                 <p class="fw-bold fs-6" style="color: lightseagreen;">Ajouter une nationalite</p>
                 <form action="{{route('ajoutnationalite')}}" method="POST">
                 @csrf
-                  <input type="text" class="form-control" name="nationalite" placeholder="Saisir nouvelle nationalite" style="background-color: white; margin-bottom: 10px; color: black;" required>
+                  <input type="text" class="form-control d-inline" name="nationalite" placeholder="Saisir nouvelle nationalite" style="background-color: white; margin-bottom: 10px; color: black;" required>
                   <input type="submit" class="btn btn-success" value="Enregistrer">
                 </form>
               </div>

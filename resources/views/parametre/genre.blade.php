@@ -23,7 +23,7 @@
                 <p class="fw-bold fs-6" style="color: lightseagreen;">Ajouter un genre</p>
                 <form action="{{route('ajoutgenre')}}" method="POST">
                 @csrf
-                  <input type="text" class="form-control" name="genre" placeholder="Saisir nouvel genre" style="background-color: white; margin-bottom: 10px; color: black;" required>
+                  <input type="text" class="form-control d-inline" name="genre" placeholder="Saisir nouvel genre" style="background-color: white; margin-bottom: 10px; color: black;" required>
                   <input type="submit" class="btn btn-success" value="Enregistrer">
                 </form>
               </div>

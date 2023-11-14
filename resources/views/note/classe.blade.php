@@ -9,7 +9,7 @@
                 <p class="fw-bold fs-6" style="color: lightseagreen;">Bienvenue dans votre tableau de bord de bulletin univ M. {{ Auth::user()->name }}</p>
                 <p>Vous pouvez <b>gérer éfficacement les aspects et opérations liées </br> à votre compte</b> et accéder aux informations éssentieles à portée de main.</p>
               </div>
-              <div style="margin-left: 170px!important;"><img src="{{asset('dist/img/boardaccueil.svg')}}" width="140" height="140" alt=""></div>
+              <div style="margin-left: 170px!important;"><img src="{{asset('dist/img/studentpi.png')}}" width="140" height="140" alt=""></div>
             </div>
           </div>
         </div>
@@ -19,7 +19,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-white">
               <div class="inner">
-                <p>ELN 1</p>
+                <p><span class="text-warning fw-bold">Classe:</span> ELN 1</p>
                 <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i>  <b>#</b>
               </div>
               <div class="icon">
@@ -31,19 +31,19 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-white">
               <div class="inner">
-                <p>ELN 2</p>
-                <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i>  <b>#</b>
+                <p><span class="text-warning fw-bold">Classe:</span> ELN 2</p>
+                <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i>  <b>#{{ $etudianteln2 }}</b>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="javascript:void(0);" class="small-box-footer text-white">Ajoutez notes<i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{route('listeELN2')}}" class="small-box-footer text-white">Ajoutez notes<i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-lg-3 col-6">
             <div class="small-box bg-white">
               <div class="inner">
-                <p>ELN 3</p>
+                <p><span class="text-warning fw-bold">Classe:</span> ELN 3</p>
                 <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i>  <b>#</b>
               </div>
               <div class="icon">
@@ -55,7 +55,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-white">
               <div class="inner">
-                <p>IT 1</p>
+                <p><span class="text-warning fw-bold">Classe:</span> IT 1</p>
                 <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i>  <b>#</b>
               </div>
               <div class="icon">
@@ -69,20 +69,20 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-white">
               <div class="inner">
-                <p>IT 2</p>
+                <p><span class="text-warning fw-bold">Classe:</span> IT 2</p>
                 <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i>
-                <b># {{ $etudiants->where('filiere', 'IT')->where('niveauetude', 'Licence 2')->where('cycle', 'Licence')->count() }}</b>
+                <b>#</b>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="{{route('listeIT2')}}" class="small-box-footer text-white">Ajoutez notes<i class="fas fa-arrow-circle-right"></i></a>
+              <a href="javascript:void(0);" class="small-box-footer text-white">Ajoutez notes<i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-lg-3 col-6">
             <div class="small-box bg-white">
               <div class="inner">
-                <p>IT 3</p>
+                <p><span class="text-warning fw-bold">Classe:</span> IT 3</p>
                 <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i>  <b>#</b>
               </div>
               <div class="icon">
@@ -94,7 +94,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-white">
               <div class="inner">
-                <p>FC 1</p>
+                <p><span class="text-warning fw-bold">Classe:</span> FC 1</p>
                 <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i>  <b>#</b>
               </div>
               <div class="icon">
@@ -106,7 +106,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-white">
               <div class="inner">
-                <p>FC 2</p>
+                <p><span class="text-warning fw-bold">Classe:</span> FC 2</p>
                 <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i>  <b>#</b>
               </div>
               <div class="icon">

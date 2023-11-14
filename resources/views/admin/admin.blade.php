@@ -17,19 +17,23 @@
           <div class="offset-3 col-lg-8 col-8">
           <form class="form etudiantsave" action="{{route('admin.store')}}" method="POST">
           @csrf
+          <label for="name" class="text-black">Nom et Prenom</label>
       <div class="inputForm">
         <i class="fa fa-user" style="color: lightseagreen;"></i>
         <input type="text" name="name" class="input" placeholder="Nom et Prénom" required>
       </div>
+      <label for="email" class="text-black">Email</label>
       <div class="inputForm">
         <i class="fa fa-envelope" style="color: lightseagreen;"></i>
         <input type="text" name="email" class="input" placeholder="Email" required>
       </div>
+      <label for="password" class="text-black">Mot de passe</label>
       <div class="inputForm">
         <i class="fa fa-key" style="color: lightseagreen;"></i>
         <input type="password" name="password" class="input" placeholder="Mot de passe" required>
         <i class="fa fa-eye" style="color: lightseagreen;"></i>
       </div>
+      <label for="password_confirmation" class="text-black">Confirmer mot de passe</label>
       <div class="inputForm">
         <i class="fa fa-lock" style="color: lightseagreen;"></i>
         <input type="password" name="password_confirmation" class="input" placeholder="Confirmer mot de passe" required>

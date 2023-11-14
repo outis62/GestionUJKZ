@@ -50,7 +50,7 @@ class AdminController extends Controller
             'password_confirmation' => $request->password_confirmation,
             'role' => $request->role,
         ]);
-        return redirect()->back();
+        return back()->with('ok', __("Admin a bien été enregistré"));
     }
 
     /**

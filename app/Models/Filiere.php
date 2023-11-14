@@ -12,4 +12,12 @@ class Filiere extends Model
     protected $fillable = [
         'filiere',
     ];
+    public function enseignant()
+    {
+        return $this->hasMany(Enseignant::class);
+    }
+    public function etudiant()
+    {
+        return $this->hasMany(Etudiant::class);
+    }
 }

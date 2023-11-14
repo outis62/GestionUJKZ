@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('i_t2_s', function (Blueprint $table) {
-            $table->id();
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('matricule');
+        Schema::create('notes', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('nom_etudiant');
             $table->string('filiere');
             $table->string('cycle');
-            $table->string('niveauetude');
-            $table->string('matiere');
+            $table->string('niveau');
             $table->string('semestre');
+            $table->string('matricule');
+            $table->string('matiere');
+            $table->integer('coefficient');
             $table->string('note');
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('i_t2_s');
+        Schema::dropIfExists('notes');
     }
 };

@@ -26,6 +26,11 @@ return new class extends Migration
             $table->string('anneeuniversitaire');
             $table->string('role');
             $table->timestamps();
+
+            $table->foreign('matiere')->references('id')->on('matieres');
+            $table->foreign('cycle')->references('id')->on('cycles');
+            $table->foreign('filiere')->references('id')->on('filieres');
+            $table->foreign('anneeuniversitaire')->references('id')->on('anneeuniversitaires');
         });
     }
 

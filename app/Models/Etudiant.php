@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Nationalite;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,14 +14,14 @@ class Etudiant extends Model
         'nom',
         'prenom',
         'telephone',
-        'genre',
+        'genre_id',
         'datenaissance',
         'matricule',
-        'cycle',
-        'filiere',
-        'niveauetude',
-        'anneeuniversitaire',
-        'nationalite',
+        'nationalite_id',
+        'cycle_id',
+        'filiere_id',
+        'niveauetude_id',
+        'anneeuniversitaire_id',
         'email',
         'password',
         'confirmerpassword',
@@ -35,6 +36,26 @@ class Etudiant extends Model
     ];
     public function nationalite()
     {
-        return $this->belongsTo(Nationalite::class, 'nationalite');
+        return $this->belongsTo(Nationalite::class, 'nationalite_id', 'id');
+    }
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class, 'genre_id', 'id');
+    }
+    public function cycle()
+    {
+        return $this->belongsTo(Cycle::class, 'cycle_id', 'id');
+    }
+    public function filiere()
+    {
+        return $this->belongsTo(Filiere::class, 'filiere_id', 'id');
+    }
+    public function niveauetude()
+    {
+        return $this->belongsTo(Niveauetude::class, 'niveauetude_id', 'id');
+    }
+    public function anneeuniversitaire()
+    {
+        return $this->belongsTo(Anneeuniversitaire::class, 'anneeuniversitaire_id', 'id');
     }
 }

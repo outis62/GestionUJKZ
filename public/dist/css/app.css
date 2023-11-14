@@ -86,9 +86,13 @@
   display: flex !important;
 }
 
-.main-footer,
+
 .sidebar-secondary {
   background-color: #6C757D !important;
+}
+
+.main-footer {
+  background-color: white !important;
 }
 
 .content-wrapper {
@@ -223,7 +227,7 @@
 }
 
 .decon {
-  background-color: rgb(96, 16, 16) !important;
+  background-color: rgb(192, 26, 26) !important;
 }
 
 .listeenseignant {

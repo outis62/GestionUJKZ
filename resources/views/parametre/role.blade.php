@@ -23,7 +23,7 @@
                 <p class="fw-bold fs-6" style="color: lightseagreen;">Ajouter un role</p>
                 <form action="{{route('ajoutrole')}}" method="POST">
                 @csrf
-                  <input type="text" class="form-control" name="role" placeholder="Saisir nouveau role" style="background-color: white; margin-bottom: 10px; color: black;" required>
+                  <input type="text" class="form-control d-inline" name="role" placeholder="Saisir nouveau role" style="background-color: white; margin-bottom: 10px; color: black;" required>
                   <input type="submit" class="btn btn-success" value="Enregistrer">
                 </form>
               </div>

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ParametreController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +34,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('etudiantsave', EtudiantController::class);
     Route::get('listeetudiant', [EtudiantController::class, 'store'])->name('store');
-    Route::post('ajoutetudiant', [EtudiantController::class, 'ajoutetudiant'])->name('ajoutetudiant');
+    Route::post('NouvelEtudiant', [EtudiantController::class, 'ajoutetudiant'])->name('ajoutetudiant');
 
     Route::get('enseignantliste', [EnseignantController::class, 'enseignant'])->name('enseignant');
     Route::resource('enseignant', EnseignantController::class);
@@ -74,9 +75,11 @@ Route::middleware('auth')->group(function () {
     Route::post('Nouveaurole', [HomeController::class, 'ajoutrole'])->name('ajoutrole');
     Route::get('listerole', [HomeController::class, 'listerole'])->name('listerole');
 
-    Route::get('classe', [HomeController::class, 'classe'])->name('classe');
-    Route::get('listeIT2', [EtudiantController::class, 'listeIT2'])->name('listeIT2');
+    Route::get('classe', [EtudiantController::class, 'classe'])->name('classe');
+    Route::get('listeELN2', [EtudiantController::class, 'listeELN2'])->name('listeELN2');
+    Route::get('/supprimer/{id}/filiere', [ParametreController::class, 'delete'])->name('delete');
 
+    Route::post('AjoutNote', [EtudiantController::class, 'enregistrerNotes'])->name('enregistrerNotes');
 });
 
 require __DIR__ . '/auth.php';

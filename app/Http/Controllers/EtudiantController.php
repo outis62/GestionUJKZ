@@ -10,8 +10,10 @@ use App\Models\Genre;
 use App\Models\Matiere;
 use App\Models\Nationalite;
 use App\Models\Niveauetude;
+use App\Models\Note;
 use App\Models\Semestre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EtudiantController extends Controller
 {
@@ -33,83 +35,53 @@ class EtudiantController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function ajoutetudiant(Request $request)
     {
-        $request->validate([
-            'nom' => 'required|string|max:255',
-            'prenom' => 'required|string|max:255',
-            'telephone' => 'required|string|max:255',
-            'genre' => 'required|string|max:255',
-            'datenaissance' => 'required|string|max:255',
-            'matricule' => 'required|string|max:255',
-            'cycle' => 'required|string|max:255',
-            'filiere' => 'required|string|max:255',
-            'niveauetude' => 'required|string|max:255',
-            'anneeuniversitaire' => 'required|string|max:255',
-            'nationalite' => 'required|string|max:255',
-            'email' => 'required|string|max:255',
-            'password' => 'required|string|min:4|confirmed',
-            'confirmerpassword' => 'required|string|min:4|confirmed',
-            'photo' => 'required|file|max:255',
-        ]);
+        // dd($request->all());
 
-        if ($request->hasFile('photo')) {
-            $fileName = time() . $request->file('photo')->getClientOriginalName();
-            $path = $request->file('photo')->storeAs('public', $fileName);
-            $photoPath = '/storage/' . $fileName;
-        }
-
-        $etudiant = new Etudiant();
+        $etudiant = new etudiant();
         $etudiant->nom = $request->input('nom');
         $etudiant->prenom = $request->input('prenom');
         $etudiant->telephone = $request->input('telephone');
-        $etudiant->genre = $request->input('genre');
+        $etudiant->genre_id = $request->input('genre_id');
         $etudiant->datenaissance = $request->input('datenaissance');
         $etudiant->matricule = $request->input('matricule');
-        $etudiant->cycle = $request->input('cycle');
-        $etudiant->filiere = $request->input('filiere');
-        $etudiant->niveauetude = $request->input('niveauetude');
-        $etudiant->anneeuniversitaire = $request->input('anneeuniversitaire');
-        $etudiant->nationalite = $request->input('nationalite');
+        $etudiant->cycle_id = $request->input('cycle_id');
+        $etudiant->filiere_id = $request->input('filiere_id');
+        $etudiant->niveauetude_id = $request->input('niveauetude_id');
+        $etudiant->anneeuniversitaire_id = $request->input('anneeuniversitaire_id');
+        $etudiant->nationalite_id = $request->input('nationalite_id');
         $etudiant->email = $request->input('email');
         $etudiant->password = $request->input('password');
         $etudiant->confirmerpassword = $request->input('confirmerpassword');
-        $etudiant->photo = $photoPath;
+        $etudiant->photo = $request->input('photo');
         $etudiant->save();
 
         return redirect()->back()->with('success', 'Étudiant ajouté avec succès.');
 
     }
 
-    public function listeIT2()
+    public function listeELN2()
     {
         $matiere = Matiere::all();
         $semestre = Semestre::all();
-        $filiere = "IT";
-        $cycle = "Licence";
-        $niveauetude = "Licence 2";
-
-        $etudiant = Etudiant::where('filiere', $filiere)
-            ->where('cycle', $cycle)
-            ->where('niveauetude', $niveauetude)
+        $etudiant = DB::table('etudiants')
+            ->join('filieres', 'etudiants.filiere_id', '=', 'filieres.id')
+            ->join('cycles', 'etudiants.cycle_id', '=', 'cycles.id')
+            ->join('niveauetudes', 'etudiants.niveauetude_id', '=', 'niveauetudes.id')
+            ->select('etudiants.*', 'filieres.filiere as filiere', 'cycles.cycle as cycle', 'niveauetudes.niveauetude as niveauetude')
+            ->where('filieres.filiere', 'ELN')
+            ->where('niveauetudes.niveauetude', 'LICENCE 2')
+            ->where('cycles.cycle', 'LICENCE')
             ->get();
 
-        return view('note.listeit2', [
+        return view('note.listeeln2', [
             'etudiant' => $etudiant,
-            'filiere' => $filiere,
-            'cycle' => $cycle,
-            'niveauetude' => $niveauetude,
             'matiere' => $matiere,
             'semestre' => $semestre,
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store()
     {
         $etudiant = Etudiant::all();
@@ -118,10 +90,55 @@ class EtudiantController extends Controller
             'etudiant' => $etudiant,
         ]);
     }
+    public function classe()
+    {
 
-    /**
-     * Display the specified resource.
-     */
+        $etudianteln2 = DB::table('etudiants')
+            ->join('filieres', 'etudiants.filiere_id', '=', 'filieres.id')
+            ->join('cycles', 'etudiants.cycle_id', '=', 'cycles.id')
+            ->join('niveauetudes', 'etudiants.niveauetude_id', '=', 'niveauetudes.id')
+            ->select('etudiants.*', 'filieres.filiere as filiere', 'cycles.cycle as cycle', 'niveauetudes.niveauetude as niveauetude')
+            ->where('filieres.filiere', 'ELN')
+            ->where('niveauetudes.niveauetude', 'LICENCE 2')
+            ->where('cycles.cycle', 'LICENCE')
+            ->count();
+
+        return view('note.classe', [
+            'etudianteln2' => $etudianteln2,
+        ]);
+    }
+    public function enregistrerNotes(Request $request)
+    {
+        $notes = $request->input('note');
+        $nomsEtudiants = $request->input('nom_etudiant');
+        $matiere = $request->input('matiere');
+        $semestre = $request->input('semestre');
+        $matricules = $request->input('matricule');
+        $filieres = $request->input('filiere');
+        $cycles = $request->input('cycle');
+        $niveaux = $request->input('niveau');
+        $coefficient = $request->input('coefficient');
+
+        foreach ($notes as $etudiantId => $note) {
+            Note::create([
+                'etudiant_id' => $etudiantId,
+                'note' => $note,
+                'nom_etudiant' => $nomsEtudiants[$etudiantId],
+                'matiere' => $matiere,
+                'semestre' => $semestre,
+                'matricule' => $matricules[$etudiantId],
+                'filiere' => $filieres[$etudiantId],
+                'cycle' => $cycles[$etudiantId],
+                'niveau' => $niveaux[$etudiantId],
+                'coefficient' => $coefficient,
+            ]);
+        }
+
+        // Redirigez l'utilisateur vers une autre page ou effectuez d'autres actions après l'enregistrement des notes.
+
+        return redirect()->back()->with('success', 'Les notes ont été enregistrées avec succès.');
+    }
+
     public function show(string $id)
     {
         //

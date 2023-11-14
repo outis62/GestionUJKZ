@@ -46,12 +46,12 @@ class EnseignantController extends Controller
             'telephone' => 'required|string|max:255',
             'email' => 'required|string|max:255',
             'password' => 'required|string|max:255',
-            'filiere' => 'required|string|max:255',
-            'cycle' => 'required|string|max:255',
-            'matiere' => 'required|string|max:255',
+            'filiere' => 'required|exists:filieres,id',
+            'cycle' => 'required|exists:cycles,id',
+            'matiere' => 'required|exists:matieres,id',
             'adhesion' => 'required|string|max:255',
             'role' => 'required|string|max:255',
-            'anneeuniversitaire' => 'required|string|max:255',
+            'anneeuniversitaire' => 'required|exists:anneeuniversitaires,id',
         ]);
 
         $enseignant = new enseignant();

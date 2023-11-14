@@ -30,6 +30,14 @@ body {
     top: 70px
 }
 
+.window-scroll {
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.buluni {
+    line-height: 1.2;
+}
+
 #circle2 {
     background: lightseagreen;
     border-radius: 50%;
