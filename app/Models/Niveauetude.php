@@ -12,8 +12,8 @@ class Niveauetude extends Model
     protected $fillable = [
         'niveauetude',
     ];
-    public function etudiant()
+    public function eleve()
     {
-        return $this->hasMany(Etudiant::class);
+        return $this->hasMany(Eleve::class);
     }
 }

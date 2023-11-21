@@ -2,14 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Anneeuniversitaire;
-use App\Models\Cycle;
+use App\Http\Requests\EtudiantRequest;
 use App\Models\Etudiant;
-use App\Models\Filiere;
-use App\Models\Genre;
 use App\Models\Matiere;
-use App\Models\Nationalite;
-use App\Models\Niveauetude;
 use App\Models\Note;
 use App\Models\Semestre;
 use Illuminate\Http\Request;
@@ -17,87 +12,81 @@ use Illuminate\Support\Facades\DB;
 
 class EtudiantController extends Controller
 {
-    public function index()
+    // public function index()
+    // {
+    //     $genre = Genre::all();
+    //     $cycle = Cycle::all();
+    //     $filiere = Filiere::all();
+    //     $niveauetude = Niveauetude::all();
+    //     $anneeuniversitaire = Anneeuniversitaire::all();
+    //     $nationalite = Nationalite::all();
+    //     return view('forme.etudiantsave', [
+    //         'genre' => $genre,
+    //         'cycle' => $cycle,
+    //         'filiere' => $filiere,
+    //         'niveauetude' => $niveauetude,
+    //         'anneeuniversitaire' => $anneeuniversitaire,
+    //         'nationalite' => $nationalite,
+    //     ]);
+    // }
+
+    public function ajoutetudiant(EtudiantRequest $request)
     {
-        $genre = Genre::all();
-        $cycle = Cycle::all();
-        $filiere = Filiere::all();
-        $niveauetude = Niveauetude::all();
-        $anneeuniversitaire = Anneeuniversitaire::all();
-        $nationalite = Nationalite::all();
-        return view('forme.etudiantsave', [
-            'genre' => $genre,
-            'cycle' => $cycle,
-            'filiere' => $filiere,
-            'niveauetude' => $niveauetude,
-            'anneeuniversitaire' => $anneeuniversitaire,
-            'nationalite' => $nationalite,
-        ]);
-    }
-
-    public function ajoutetudiant(Request $request)
-    {
-        // dd($request->all());
-
-        $etudiant = new etudiant();
-        $etudiant->nom = $request->input('nom');
-        $etudiant->prenom = $request->input('prenom');
-        $etudiant->telephone = $request->input('telephone');
-        $etudiant->genre_id = $request->input('genre_id');
-        $etudiant->datenaissance = $request->input('datenaissance');
-        $etudiant->matricule = $request->input('matricule');
-        $etudiant->cycle_id = $request->input('cycle_id');
-        $etudiant->filiere_id = $request->input('filiere_id');
-        $etudiant->niveauetude_id = $request->input('niveauetude_id');
-        $etudiant->anneeuniversitaire_id = $request->input('anneeuniversitaire_id');
-        $etudiant->nationalite_id = $request->input('nationalite_id');
-        $etudiant->email = $request->input('email');
-        $etudiant->password = $request->input('password');
-        $etudiant->confirmerpassword = $request->input('confirmerpassword');
-        $etudiant->photo = $request->input('photo');
-        $etudiant->save();
-
-        return redirect()->back()->with('success', 'Étudiant ajouté avec succès.');
-
+        // $request->validate([
+        //     'nom' => 'required|min:3|max:255',
+        //     'description' => 'required|min:3|max:255',
+        //     'image' => 'required|min:3|max:255',
+        //     'stock_id' => 'required|exists:stocks,id'
+        // ]);
+        // $product = new Product();
+        // $product->nom = $request->nom;
+        // $product->description = $request->description;
+        // $product->image = $request->image;
+        // $product->stock_id = $request->stock_id;
+        // $product->save();
+        // return redirect()->route('products.index')->with('success', 'Produit créé avec succès !');
+        $inputs = $request->validated();
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('/images');
+            $inputs['photo'] = $path;
+        }
+        Etudiant::create($inputs);
+        return redirect()->route('ajoutetudiant')->with('success', 'Produit créé avec succès !');
     }
 
     public function listeELN2()
     {
         $matiere = Matiere::all();
         $semestre = Semestre::all();
-        $etudiant = DB::table('etudiants')
-            ->join('filieres', 'etudiants.filiere_id', '=', 'filieres.id')
-            ->join('cycles', 'etudiants.cycle_id', '=', 'cycles.id')
-            ->join('niveauetudes', 'etudiants.niveauetude_id', '=', 'niveauetudes.id')
-            ->select('etudiants.*', 'filieres.filiere as filiere', 'cycles.cycle as cycle', 'niveauetudes.niveauetude as niveauetude')
+        $eleve = DB::table('eleves')
+            ->join('filieres', 'eleves.filiere_id', '=', 'filieres.id')
+            ->join('cycles', 'eleves.cycle_id', '=', 'cycles.id')
+            ->join('niveauetudes', 'eleves.niveauetude_id', '=', 'niveauetudes.id')
+            ->select('eleves.*', 'filieres.filiere as filiere', 'cycles.cycle as cycle', 'niveauetudes.niveauetude as niveauetude')
             ->where('filieres.filiere', 'ELN')
             ->where('niveauetudes.niveauetude', 'LICENCE 2')
             ->where('cycles.cycle', 'LICENCE')
             ->get();
 
         return view('note.listeeln2', [
-            'etudiant' => $etudiant,
+            'eleve' => $eleve,
             'matiere' => $matiere,
             'semestre' => $semestre,
         ]);
     }
 
-    public function store()
-    {
-        $etudiant = Etudiant::all();
+    // public function store()
+    // {
 
-        return view('forme.listeetudiant', [
-            'etudiant' => $etudiant,
-        ]);
-    }
+    // }
     public function classe()
     {
 
-        $etudianteln2 = DB::table('etudiants')
-            ->join('filieres', 'etudiants.filiere_id', '=', 'filieres.id')
-            ->join('cycles', 'etudiants.cycle_id', '=', 'cycles.id')
-            ->join('niveauetudes', 'etudiants.niveauetude_id', '=', 'niveauetudes.id')
-            ->select('etudiants.*', 'filieres.filiere as filiere', 'cycles.cycle as cycle', 'niveauetudes.niveauetude as niveauetude')
+        $etudianteln2 = DB::table('eleves')
+            ->join('filieres', 'eleves.filiere_id', '=', 'filieres.id')
+            ->join('cycles', 'eleves.cycle_id', '=', 'cycles.id')
+            ->join('niveauetudes', 'eleves.niveauetude_id', '=', 'niveauetudes.id')
+            ->select('etudiants.*', 'eleves.filiere as filiere', 'cycles.cycle as cycle', 'niveauetudes.niveauetude as niveauetude')
             ->where('filieres.filiere', 'ELN')
             ->where('niveauetudes.niveauetude', 'LICENCE 2')
             ->where('cycles.cycle', 'LICENCE')

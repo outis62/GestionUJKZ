@@ -2,26 +2,14 @@
 
 namespace App\Models;
 
-use App\Models\Matiere;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Enseignant extends Model
+class Eleve extends Model
 {
     use HasFactory, HasUuids;
-    protected $fillable = [
-        'nom',
-        'prenom',
-        'telephone',
-        'email',
-        'password',
-        'filiere_id',
-        'cycle_id',
-        'matiere_id',
-        'adhesion',
-        'anneeuniversitaire_id',
-    ];
+    protected $fillable = ['nom', 'prenom', 'telephone', 'email', 'genre_id', 'cycle_id', 'filiere_id', 'niveauetude_id', 'anneeuniversitaire_id', 'nationalite_id', 'matricule', 'datenaissance', 'password', 'confirmerpassword', 'image'];
 
     protected $hidden = [
         'password',
@@ -29,10 +17,15 @@ class Enseignant extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'confirmerpassword' => 'hashed',
     ];
-    public function matiere()
+    public function nationalite()
     {
-        return $this->belongsTo(Matiere::class);
+        return $this->belongsTo(Nationalite::class);
+    }
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
     }
     public function cycle()
     {
@@ -42,8 +35,16 @@ class Enseignant extends Model
     {
         return $this->belongsTo(Filiere::class);
     }
+    public function niveauetude()
+    {
+        return $this->belongsTo(Niveauetude::class);
+    }
     public function anneeuniversitaire()
     {
         return $this->belongsTo(Anneeuniversitaire::class);
+    }
+    public function tuteur()
+    {
+        return $this->belongsTo(Tuteur::class);
     }
 }

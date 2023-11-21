@@ -16,6 +16,11 @@
   border-radius: 5px 0px 0px 5px;
 }
 
+.dropdown-menu {
+  background-color: #6C757D !important;
+}
+
+
 .mdpoublie {
   margin-right: -30px !important;
   margin-bottom: 50px !important;
@@ -89,6 +94,10 @@
 
 .sidebar-secondary {
   background-color: #6C757D !important;
+}
+
+.sidebarnav {
+  margin-bottom: 150px !important;
 }
 
 .main-footer {
@@ -230,10 +239,19 @@
   background-color: rgb(192, 26, 26) !important;
 }
 
-.listeenseignant {
+#enseignant {
   color: black !important;
   background-color: lightseagreen !important;
 }
+
+#enseignant tbody tr:hover {
+  color: white;
+  background-color: #6C757D !important;
+  cursor: pointer;
+}
+
+
+
 
 .line-active {
   background-position: left bottom;

@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EleveController;
 use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ParametreController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TuteurController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -80,6 +82,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/supprimer/{id}/filiere', [ParametreController::class, 'delete'])->name('delete');
 
     Route::post('AjoutNote', [EtudiantController::class, 'enregistrerNotes'])->name('enregistrerNotes');
+
+    Route::resource('Eleve', 'App\Http\Controllers\EleveController');
+    Route::get('/eleve/supprimer/{eleve}', [EleveController::class, 'destroy'])->name('supprimereleve');
+
+    Route::resource('tuteur', TuteurController::class);
+
 });
 
 require __DIR__ . '/auth.php';

@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Anneeuniversitaire extends Model
+class Tuteur extends Model
 {
     use HasFactory, HasUuids;
-    protected $fillable = [
-        'anneeuniversitaire',
-    ];
-    public function enseignant()
-    {
-        return $this->hasMany(Enseignant::class);
-    }
+    protected $fillable = ([
+        'nom',
+        'prenom',
+        'telephone',
+        'email',
+        'residence',
+    ]);
     public function eleve()
     {
         return $this->hasMany(Eleve::class);

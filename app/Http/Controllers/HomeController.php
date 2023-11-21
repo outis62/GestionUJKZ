@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Anneeuniversitaire;
 use App\Models\Cycle;
+use App\Models\Eleve;
 use App\Models\Enseignant;
-use App\Models\Etudiant;
 use App\Models\Filiere;
 use App\Models\Genre;
 use App\Models\Matiere;
@@ -22,13 +22,13 @@ class HomeController extends Controller
     {
         $user = User::all();
         $enseignant = Enseignant::count();
-        $etudiant = Etudiant::count();
+        $eleve = Eleve::count();
         $filiere = Filiere::count();
         $matiere = Matiere::count();
         $nationalite = Nationalite::count();
         return view('home', [
             'enseignant' => $enseignant,
-            'etudiant' => $etudiant,
+            'eleve' => $eleve,
             'filiere' => $filiere,
             'matiere' => $matiere,
             'nationalite' => $nationalite,

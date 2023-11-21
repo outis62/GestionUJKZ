@@ -16,4 +16,8 @@ class Cycle extends Model
     {
         return $this->hasMany(Enseignant::class);
     }
+    public function eleve()
+    {
+        return $this->hasMany(Eleve::class);
+    }
 }

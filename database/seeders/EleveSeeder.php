@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\Enseignant;
+use App\Models\Eleve;
 use Illuminate\Database\Seeder;
 
-class EnseignantSeeder extends Seeder
+class EleveSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Enseignant::factory(100)->create();
+        Eleve::factory(100)->create();
     }
 }

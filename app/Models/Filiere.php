@@ -16,8 +16,8 @@ class Filiere extends Model
     {
         return $this->hasMany(Enseignant::class);
     }
-    public function etudiant()
+    public function eleve()
     {
-        return $this->hasMany(Etudiant::class);
+        return $this->hasMany(Eleve::class);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Etudiant;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,8 +12,8 @@ class Nationalite extends Model
     protected $fillable = [
         'nationalite',
     ];
-    public function etudiant()
+    public function eleve()
     {
-        return $this->hasMany(Etudiant::class);
+        return $this->hasMany(Eleve::class);
     }
 }

@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EtudiantRequest extends FormRequest
+class StoreEleveRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,21 +22,21 @@ class EtudiantRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cycle' => 'required|string|max:255',
-            'niveauetude' => 'required|string|max:255',
-            'filiere' => 'required|string|max:255',
-            'nationalite' => 'required|string|max:255',
-            'anneeuniversitaire' => 'required|string|max:255',
-            'matricule' => 'required|integer|max:255',
+            'cycle_id' => 'required',
+            'niveauetude_id' => 'required',
+            'filiere_id' => 'required',
+            'nationalite_id' => 'required',
+            'anneeuniversitaire_id' => 'required',
+            'matricule' => 'required',
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
-            'datenaissance' => 'required|date|max:255',
-            'genre' => 'required|string|max:255',
-            'email' => 'required|string|max:255',
-            'motdepasse' => 'required|string|max:255',
-            'confirmermotdepasse' => 'required|string|max:255',
-            'telephone' => 'required|integer|max:255',
-            'photo' => 'required|file|max:255',
+            'datenaissance' => 'required|date',
+            'genre_id' => 'required',
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|max:255',
+            'confirmerpassword' => 'required|string|max:255',
+            'telephone' => 'required',
+            'image' => 'required',
         ];
     }
     public function messages()
@@ -44,6 +44,7 @@ class EtudiantRequest extends FormRequest
         return [
 
             'nom.required' => 'le champ nom est requis',
+            'nom.min' => 'Le nom doit contenir au moins 3 caractères',
             'prenom.required' => 'le champ prenom est requis',
             'datenaissance.required' => 'le champ date de naissance est requis',
             'genre.required' => 'le champ genre est requis',

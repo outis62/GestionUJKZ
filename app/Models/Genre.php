@@ -12,8 +12,8 @@ class Genre extends Model
     protected $fillable = [
         'genre',
     ];
-    public function etudiant()
+    public function eleve()
     {
-        return $this->hasMany(Etudiant::class);
+        return $this->hasMany(Eleve::class);
     }
 }

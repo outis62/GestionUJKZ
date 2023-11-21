@@ -6,12 +6,16 @@ use App\Models\Filiere;
 
 class ParametreController extends Controller
 {
-    public function delete($id)
+    public function delete($filiere)
     {
-        $filiere = Filiere::find($id);
-        $etudiant = $filiere->etudiant;
-        foreach ($etudiant as $etudiant) {
-            $etudiant->delete();
+        $filiere = Filiere::find($filiere);
+        $eleve = $filiere->eleve;
+        $enseignant = $filiere->enseignant;
+        foreach ($eleve as $eleve) {
+            $eleve->delete();
+        }
+        foreach ($enseignant as $enseignant) {
+            $enseignant->delete();
         }
         $filiere->delete();
 
