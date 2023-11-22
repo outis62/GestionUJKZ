@@ -14,11 +14,16 @@
                         </div>
                         <div style="margin-left: 170px!important;"><img src="{{ asset('dist/img/studentsave.svg') }}"
                                 width="140" height="140" alt=""><a type="btn" class="btn btn-success ms-2"
-                                href="{{ route('adminliste') }}">Liste <i class="fa fa-book"></i></a></div>
+                                href="{{ route('admin.create') }}">Liste <i class="fa fa-book"></i></a></div>
                     </div>
                 </div>
             </div>
             <div class="row">
+                @if (\Session::has('message'))
+                    <div class="alert alert-light">
+                        <h4>{{ \Session::get('message') }}</h4>
+                    </div>
+                @endif
                 <div class="offset-3 col-lg-8 col-8">
                     <form class="form etudiantsave" action="{{ route('admin.store') }}" method="POST">
                         @csrf
@@ -30,7 +35,7 @@
                         <label for="email" class="text-black">Email</label>
                         <div class="inputForm">
                             <i class="fa fa-envelope" style="color: lightseagreen;"></i>
-                            <input type="text" name="email" class="input" placeholder="Email" required>
+                            <input type="email" name="email" class="input" placeholder="Email" required>
                         </div>
                         <label for="password" class="text-black">Mot de passe</label>
                         <div class="inputForm">

@@ -19,6 +19,11 @@
                 </div>
             </div>
             <div class="row">
+                @if (\Session::has('message'))
+                    <div class="alert alert-light">
+                        <h4>{{ \Session::get('message') }}</h4>
+                    </div>
+                @endif
                 <div class="offset-3 col-lg-8 col-8">
                     <form class="form etudiantsave" action="{{ route('Eleve.store') }}" method="POST">
                         @csrf
@@ -133,7 +138,7 @@
                         <div class="inputForm">
                             <i class="fa fa-user text-black"></i>
                             <label for="tuteur" class="mt-2 ms-2 text-black">Tuteur</label>
-                            <input type="password" name="tuteur_id" class="input" required>
+                            <input type="text" id="tuteur" name="tuteur_id" class="input" required>
                         </div>
                         <div class="inputForm">
                             <label for="photo" class="text-black">Photo</label>

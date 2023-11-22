@@ -1,5 +1,11 @@
 <?php
 
+use App\Models\Cycle;
+use App\Models\Eleve;
+use App\Models\Filiere;
+use App\Models\Matiere;
+use App\Models\Niveauetude;
+use App\Models\Semestre;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,13 +19,13 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('nom_etudiant');
-            $table->string('filiere');
-            $table->string('cycle');
-            $table->string('niveau');
-            $table->string('semestre');
             $table->string('matricule');
-            $table->string('matiere');
+            $table->foreignIdFor(Eleve::class);
+            $table->foreignIdFor(Matiere::class);
+            $table->foreignIdFor(Semestre::class);
+            $table->foreignIdFor(Filiere::class);
+            $table->foreignIdFor(Cycle::class);
+            $table->foreignIdFor(Niveauetude::class);
             $table->integer('coefficient');
             $table->string('note');
             $table->timestamps();

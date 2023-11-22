@@ -64,7 +64,7 @@ class EleveController extends Controller
             $inputs['image'] = $path;
         }
         Eleve::create($inputs);
-        return redirect()->route('Eleve.index')->with('success', 'Etudiant créé avec succès !');
+        return redirect()->route('Eleve.index')->with('message', 'Etudiant ajouté avec succès !');
     }
 
     /**
@@ -97,6 +97,6 @@ class EleveController extends Controller
     public function destroy(Eleve $eleve)
     {
         $eleve->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Etudiant supprimer avec succès !');
     }
 }

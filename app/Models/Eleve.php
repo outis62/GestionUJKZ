@@ -47,4 +47,8 @@ class Eleve extends Model
     {
         return $this->belongsTo(Tuteur::class);
     }
+    public function note()
+    {
+        return $this->hasMany(Note::class);
+    }
 }

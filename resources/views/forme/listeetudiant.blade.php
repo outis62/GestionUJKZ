@@ -2,14 +2,15 @@
 @section('page-content')
     <section class="content">
         <div class="container-fluid">
+            @if (\Session::has('success'))
+                <div class="alert alert-danger">
+                    <h4>{{ \Session::get('success') }}</h4>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-lg-12 col-12">
-                    <h3 style="color: black!important">Liste des étudiants</h3>
+                    <h3 class="text-center" style="color: black!important">Liste des étudiants</h3>
                     <a href="{{ route('Eleve.index') }}" type="button" class="btn btn-primary">Ajouter un étudiant</a>
-                    <a href="javascript:void(0);" type="button" class="btn btn-secondary">Imprimer <i
-                            class="fa fa-print"></i></a>
-                    <a href="javascript:void(0);" type="button" class="btn btn-success">Excel <i
-                            class="fa fa-file"></i></a>
                     <a href="{{ route('home') }}" type="button" class="btn btn-info"><i class="fa fa-backward"></i>
                         Retour</a>
                     <div class="table-responsive">

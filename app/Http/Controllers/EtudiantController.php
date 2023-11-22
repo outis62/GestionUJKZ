@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\EtudiantRequest;
-use App\Models\Etudiant;
 use App\Models\Matiere;
 use App\Models\Note;
 use App\Models\Semestre;
@@ -29,30 +27,6 @@ class EtudiantController extends Controller
     //         'nationalite' => $nationalite,
     //     ]);
     // }
-
-    public function ajoutetudiant(EtudiantRequest $request)
-    {
-        // $request->validate([
-        //     'nom' => 'required|min:3|max:255',
-        //     'description' => 'required|min:3|max:255',
-        //     'image' => 'required|min:3|max:255',
-        //     'stock_id' => 'required|exists:stocks,id'
-        // ]);
-        // $product = new Product();
-        // $product->nom = $request->nom;
-        // $product->description = $request->description;
-        // $product->image = $request->image;
-        // $product->stock_id = $request->stock_id;
-        // $product->save();
-        // return redirect()->route('products.index')->with('success', 'Produit créé avec succès !');
-        $inputs = $request->validated();
-        if ($request->hasFile('photo')) {
-            $path = $request->file('photo')->store('/images');
-            $inputs['photo'] = $path;
-        }
-        Etudiant::create($inputs);
-        return redirect()->route('ajoutetudiant')->with('success', 'Produit créé avec succès !');
-    }
 
     public function listeELN2()
     {
@@ -99,26 +73,26 @@ class EtudiantController extends Controller
     public function enregistrerNotes(Request $request)
     {
         $notes = $request->input('note');
-        $nomsEtudiants = $request->input('nom_etudiant');
-        $matiere = $request->input('matiere');
-        $semestre = $request->input('semestre');
+        $nomsEtudiants = $request->input('eleve_id');
+        $matiere = $request->input('matiere_id');
+        $semestre = $request->input('semestre_id');
         $matricules = $request->input('matricule');
-        $filieres = $request->input('filiere');
-        $cycles = $request->input('cycle');
-        $niveaux = $request->input('niveau');
+        $filieres = $request->input('filiere_id');
+        $cycles = $request->input('cycle_id');
+        $niveauetudes = $request->input('niveauetude_id');
         $coefficient = $request->input('coefficient');
 
         foreach ($notes as $etudiantId => $note) {
             Note::create([
                 'etudiant_id' => $etudiantId,
                 'note' => $note,
-                'nom_etudiant' => $nomsEtudiants[$etudiantId],
-                'matiere' => $matiere,
-                'semestre' => $semestre,
+                'eleve_id' => $nomsEtudiants[$etudiantId],
+                'matiere_id' => $matiere,
+                'semestre_id' => $semestre,
                 'matricule' => $matricules[$etudiantId],
-                'filiere' => $filieres[$etudiantId],
-                'cycle' => $cycles[$etudiantId],
-                'niveau' => $niveaux[$etudiantId],
+                'filiere_id' => $filieres[$etudiantId],
+                'cycle_id' => $cycles[$etudiantId],
+                'niveauetude_id' => $niveauetudes[$etudiantId],
                 'coefficient' => $coefficient,
             ]);
         }

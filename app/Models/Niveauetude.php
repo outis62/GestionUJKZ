@@ -16,4 +16,8 @@ class Niveauetude extends Model
     {
         return $this->hasMany(Eleve::class);
     }
+    public function note()
+    {
+        return $this->hasMany(Note::class);
+    }
 }

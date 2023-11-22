@@ -76,21 +76,21 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-white">
                         <div class="inner">
-                            <p>Admin.s</p>
+                            <p>Admin</p>
                             <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i>
                             <b>#{{ $user->where('role', 'admin')->count() }}</b>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
                         </div>
-                        <a href="{{ route('adminliste') }}" class="small-box-footer text-white">Voir plus <i
+                        <a href="{{ route('admin.create') }}" class="small-box-footer text-white">Voir plus <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-white">
                         <div class="inner">
-                            <p>Enseignant.e.s</p>
+                            <p>Enseignant</p>
                             <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i> <b>#{{ $enseignant }}</b>
                         </div>
                         <div class="icon">
@@ -103,7 +103,7 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-white">
                         <div class="inner">
-                            <p>Etudiant.e.s</p>
+                            <p>Etudiant</p>
                             <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i> <b>#{{ $eleve }}</b>
                         </div>
                         <div class="icon">

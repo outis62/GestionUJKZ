@@ -50,7 +50,7 @@ class AdminController extends Controller
             'password_confirmation' => $request->password_confirmation,
             'role' => $request->role,
         ]);
-        return back()->with('ok', __("Admin a bien été enregistré"));
+        return back()->with('message', 'L\'administrateur a bien été enregistré !');
     }
 
     /**
@@ -80,8 +80,9 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->back()->with('success', 'administrateur supprimer avec succes !');
     }
 }

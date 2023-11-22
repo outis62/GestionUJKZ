@@ -3,6 +3,11 @@
 @section('page-content')
     <section class="content">
         <div class="container-fluid">
+            @if (\Session::has('message'))
+                <div class="alert alert-light">
+                    <h4>{{ \Session::get('message') }}</h4>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-lg-12 col-12">
                     <div class="small-box bg-white boardaccueil">

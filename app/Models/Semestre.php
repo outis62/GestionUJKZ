@@ -12,4 +12,8 @@ class Semestre extends Model
     protected $fillable = [
         'semestre',
     ];
+    public function note()
+    {
+        return $this->hasMany(Note::class);
+    }
 }

@@ -10,15 +10,39 @@ class Note extends Model
 {
     use HasFactory, HasUuids;
     protected $fillable = [
-        'nom_etudiant',
-        'matiere',
-        'semestre',
+        'eleve_id',
+        'matiere_id',
+        'semestre_id',
         'coefficient',
         'matricule',
-        'filiere',
-        'cycle',
-        'niveau',
+        'filiere_id',
+        'cycle_id',
+        'niveauetude_id',
         'note',
 
     ];
+    public function eleve()
+    {
+        return $this->belongsTo(Eleve::class);
+    }
+    public function matiere()
+    {
+        return $this->belongsTo(Matiere::class);
+    }
+    public function semestre()
+    {
+        return $this->belongsTo(Semestre::class);
+    }
+    public function filiere()
+    {
+        return $this->belongsTo(Filiere::class);
+    }
+    public function cycle()
+    {
+        return $this->belongsTo(Cycle::class);
+    }
+    public function niveauetude()
+    {
+        return $this->belongsTo(Niveauetude::class);
+    }
 }

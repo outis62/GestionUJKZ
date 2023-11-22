@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('admin', AdminController::class);
-    Route::get('/adminliste', [AdminController::class, 'create'])->name('adminliste');
+    Route::get('admin/supprimer/{user}', [AdminController::class, 'destroy'])->name('supprimeradmin');
 
     Route::resource('etudiantsave', EtudiantController::class);
     Route::get('listeetudiant', [EtudiantController::class, 'store'])->name('store');
@@ -87,6 +87,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/eleve/supprimer/{eleve}', [EleveController::class, 'destroy'])->name('supprimereleve');
 
     Route::resource('tuteur', TuteurController::class);
+    Route::get('tuteur/supprimer/{tuteur}', [TuteurController::class, 'destroy'])->name('supprimertuteur');
 
 });
 

@@ -20,6 +20,15 @@
   background-color: #6C757D !important;
 }
 
+.excel {
+  background-color: rgb(32, 178, 103) !important;
+  /* Ajoutez d'autres styles ici */
+}
+
+.print {
+  background-color: gray !important;
+}
+
 
 .mdpoublie {
   margin-right: -30px !important;

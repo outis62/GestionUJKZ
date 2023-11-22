@@ -13,26 +13,23 @@
                 <div class="col-lg-12 col-12">
                     <form action="{{ route('enregistrerNotes') }}" method="POST">
                         @csrf
-                        <a href="javascript:void(0);" type="button" class="btn btn-secondary">Imprimer <i
-                                class="fa fa-print"></i></a>
-                        <a href="javascript:void(0);" type="button" class="btn btn-success">Excel <i
-                                class="fa fa-file"></i></a>
+                        @method('POST')
                         <a href="{{ route('classe') }}" type="button" class="btn btn-info"><i class="fa fa-backward"></i>
                             Retour</a>
                         <label for="matiere" style="color: lightseagreen;">Choisir matière <i
                                 class="fas fa-arrow-circle-right"></i></label>
-                        <select name="matiere" class="" id="matiere"
+                        <select name="matiere_id" class="" id="matiere"
                             style="background-color: white; color:black; height:38px; border-radius:7px;">
                             @foreach ($matiere as $matiere)
-                                <option value="{{ $matiere->matiere }}">{{ $matiere->matiere }}</option>
+                                <option value="{{ $matiere->id }}">{{ $matiere->matiere }}</option>
                             @endforeach
                         </select>
                         <label for="semestre" style="color: lightseagreen;">Choisir Semèstre <i
                                 class="fas fa-arrow-circle-right"></i></label>
-                        <select name="semestre" class="" id="semestre"
+                        <select name="semestre_id" class="" id="semestre"
                             style="background-color: white; color:black; height:38px; border-radius:7px;">
                             @foreach ($semestre as $semestre)
-                                <option value="{{ $semestre->semestre }}">{{ $semestre->semestre }}</option>
+                                <option value="{{ $semestre->id }}">{{ $semestre->semestre }}</option>
                             @endforeach
                         </select>
                         <div class="table-responsive">
@@ -42,9 +39,6 @@
                                         <th>#</th>
                                         <th>Nom étudiant</th>
                                         <th>Matricule</th>
-                                        {{-- <th>Filière</th>
-                                        <th>Cycle</th>
-                                        <th>Niveau</th> --}}
                                         <th>Note</th>
                                     </tr>
                                 </thead>
@@ -55,21 +49,18 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $eleve->nom }} {{ $eleve->prenom }}</td>
                                             <td>{{ $eleve->matricule }}</td>
-                                            {{-- <td>{{ $eleve->filiere }}</td>
-                                            <td>{{ $eleve->cycle }}</td>
-                                            <td>{{ $eleve->niveauetude }}</td> --}}
                                             <td>
                                                 <input type="text" name="note[{{ $eleve->id }}]"
                                                     placeholder="note ici !" style="width: 80px;" required>
-                                                <input type="hidden" name="nom_etudiant[{{ $eleve->id }}]"
+                                                <input type="hidden" name="eleve_id[{{ $eleve->id }}]"
                                                     value="{{ $eleve->nom }} {{ $eleve->prenom }}">
                                                 <input type="hidden" name="matricule[{{ $eleve->id }}]"
                                                     value="{{ $eleve->matricule }}">
-                                                <input type="hidden" name="filiere[{{ $eleve->id }}]"
+                                                <input type="hidden" name="filiere_id[{{ $eleve->id }}]"
                                                     value="{{ $eleve->filiere }}">
-                                                <input type="hidden" name="cycle[{{ $eleve->id }}]"
+                                                <input type="hidden" name="cycle_id[{{ $eleve->id }}]"
                                                     value="{{ $eleve->cycle }}">
-                                                <input type="hidden" name="niveau[{{ $eleve->id }}]"
+                                                <input type="hidden" name="niveauetude_id[{{ $eleve->id }}]"
                                                     value="{{ $eleve->niveauetude }}">
                                                 <input type="hidden" name="coefficient"
                                                     value="{{ $matiere->coefficient }}">

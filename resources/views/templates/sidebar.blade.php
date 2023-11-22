@@ -6,7 +6,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], '/') + 
     </div>
     <nav class="mt-2 sidebarnav">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item menu-open">
+            <li class="nav-item menu-open sticky-top z-index-99">
                 <a href="{{ route('home') }}" class="nav-link active">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>Accueil</p>
@@ -164,7 +164,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], '/') + 
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                         @if (Auth::user()->role != 'enseignant' && Auth::user()->role != 'admin' && Auth::user()->role != 'etudiant')
-                            <a href="{{ route('adminliste') }}" class="nav-link">
+                            <a href="{{ route('admin.create') }}" class="nav-link">
                                 <i class="far fa-user nav-icon" style="color: orange;"></i>
                                 <p style="color: orange;">Admin</p>
                             </a>

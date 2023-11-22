@@ -36,7 +36,7 @@ class TuteurController extends Controller
     {
         $inputs = $request->validated();
         Tuteur::create($inputs);
-        return redirect()->route('tuteur.create')->with('success', 'Tuteur créé avec succès !');
+        return redirect()->route('tuteur.create')->with('message', 'Tuteur créé avec succès !');
     }
 
     /**
@@ -68,6 +68,7 @@ class TuteurController extends Controller
      */
     public function destroy(Tuteur $tuteur)
     {
-        //
+        $tuteur->delete();
+        return redirect()->route('tuteur.index')->with('success', 'Tuteur supprimer avec succes !');
     }
 }

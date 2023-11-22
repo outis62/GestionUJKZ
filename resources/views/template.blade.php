@@ -67,6 +67,27 @@
                 });
             });
         </script>
+        <script>
+            $('#tuteur').keyup(function() {
+                $.ajax({
+                    url: '/tuteur',
+                    type: 'GET',
+                    data: {
+                        tuteur: this.value
+                    },
+                    success: function(tuteurs) {
+                        $('#tuteurs').empty();
+                        $.each(tuteurs, function(index, tuteur) {
+                            $('#tuteurs').append('<tr><td>' + tuteur.nom + '</td><td>' + tuteur
+                                .prenom + '</td><td>' + tuteur.telephone + '</td></tr>'
+                            );
+                        });
+
+                    }
+                });
+
+            });
+        </script>
 </body>
 
 </html>

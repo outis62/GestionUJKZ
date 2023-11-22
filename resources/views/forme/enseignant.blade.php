@@ -5,8 +5,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-12">
+                    <h3 class="text-center" style="color: black!important">Liste des enseignants</h3>
                     <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" type="button"
-                        class="btn btn-primary">Ajouter un.e enseignant.e</a>
+                        class="btn btn-primary">Ajouter un enseignant</a>
                     <div id="myModal" class="modal fade" role="dialog">
                         <div class="modal-dialog">
 
@@ -81,12 +82,18 @@
 
                         </div>
                     </div>
-                    <a href="javascript:void(0);" type="button" class="btn btn-secondary">Imprimer <i
-                            class="fa fa-print"></i></a>
-                    <a href="javascript:void(0);" type="button" class="btn btn-success">Excel <i
-                            class="fa fa-file"></i></a>
                     <a href="{{ route('home') }}" type="button" class="btn btn-info"><i class="fa fa-backward"></i>
                         Retour</a>
+                    @if (\Session::has('success'))
+                        <div class="alert alert-danger">
+                            <h4>{{ \Session::get('success') }}</h4>
+                        </div>
+                    @endif
+                    @if (\Session::has('message'))
+                        <div class="alert alert-light">
+                            <h4>{{ \Session::get('message') }}</h4>
+                        </div>
+                    @endif
                     <div class="table-responsive" id="enseignant_table">
                         <table id="enseignant" class="table table-default listeenseignant">
                             <thead>
@@ -107,14 +114,18 @@
                                         <td>{{ $enseignant->prenom }}</td>
                                         <td>{{ $enseignant->telephone }}</td>
                                         <td>{{ $enseignant->email }}</td>
-                                        <td style="width: 130px;">
-                                            <a href="javascript:void(0);" class="btn btn-info"><i
+                                        <td style="display:flex;">
+                                            <a href="javascript:void(0);" class="btn btn-info ms-3"><i
                                                     class="fa fa-info"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-success d-iniline"><i
+                                            <a href="javascript:void(0);" class="btn btn-success ms-1"><i
                                                     class="fa fa-pen"></i></a>
-                                            <a href="javascript:void(0);" type="button"
-                                                class="btn btn-danger d-inline mt-1 delete"><i
-                                                    class="fa fa-trash"></i></a>
+                                            <form action="{{ route('enseignant.destroy', $enseignant->id) }}"
+                                                method="POST" class="ms-1">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit" class="btn btn-danger delete"><i
+                                                        class="fa fa-trash"></i></a></button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

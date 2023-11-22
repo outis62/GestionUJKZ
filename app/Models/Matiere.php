@@ -17,4 +17,8 @@ class Matiere extends Model
     {
         return $this->hasMany(Enseignant::class);
     }
+    public function note()
+    {
+        return $this->hasMany(Note::class);
+    }
 }
