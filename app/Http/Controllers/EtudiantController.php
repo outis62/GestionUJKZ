@@ -70,37 +70,74 @@ class EtudiantController extends Controller
             'etudianteln2' => $etudianteln2,
         ]);
     }
+    public function ListeEln1()
+    {
+        $matiere = Matiere::all();
+        $semestre = Semestre::all();
+        $eleve = DB::table('eleves')
+            ->join('filieres', 'eleves.filiere_id', '=', 'filieres.id')
+            ->join('cycles', 'eleves.cycle_id', '=', 'cycles.id')
+            ->join('niveauetudes', 'eleves.niveauetude_id', '=', 'niveauetudes.id')
+            ->select('eleves.*', 'filieres.filiere as filiere', 'cycles.cycle as cycle', 'niveauetudes.niveauetude as niveauetude')
+            ->where('filieres.filiere', 'ELN')
+            ->where('niveauetudes.niveauetude', 'LICENCE 1')
+            ->where('cycles.cycle', 'LICENCE')
+            ->get();
+
+        return view('note.liste-eln-1', [
+            'eleve' => $eleve,
+            'matiere' => $matiere,
+            'semestre' => $semestre,
+        ]);
+    }
+    public function ListeEln3()
+    {
+        $matiere = Matiere::all();
+        $semestre = Semestre::all();
+        $eleve = DB::table('eleves')
+            ->join('filieres', 'eleves.filiere_id', '=', 'filieres.id')
+            ->join('cycles', 'eleves.cycle_id', '=', 'cycles.id')
+            ->join('niveauetudes', 'eleves.niveauetude_id', '=', 'niveauetudes.id')
+            ->select('eleves.*', 'filieres.filiere as filiere', 'cycles.cycle as cycle', 'niveauetudes.niveauetude as niveauetude')
+            ->where('filieres.filiere', 'ELN')
+            ->where('niveauetudes.niveauetude', 'LICENCE 3')
+            ->where('cycles.cycle', 'LICENCE')
+            ->get();
+
+        return view('note.liste-eln-3', [
+            'eleve' => $eleve,
+            'matiere' => $matiere,
+            'semestre' => $semestre,
+        ]);
+    }
     public function enregistrerNotes(Request $request)
     {
         $notes = $request->input('note');
-        $nomsEtudiants = $request->input('eleve_id');
-        $matiere = $request->input('matiere_id');
-        $semestre = $request->input('semestre_id');
-        $matricules = $request->input('matricule');
-        $filieres = $request->input('filiere_id');
-        $cycles = $request->input('cycle_id');
-        $niveauetudes = $request->input('niveauetude_id');
-        $coefficient = $request->input('coefficient');
-
-        foreach ($notes as $etudiantId => $note) {
-            Note::create([
-                'etudiant_id' => $etudiantId,
-                'note' => $note,
-                'eleve_id' => $nomsEtudiants[$etudiantId],
-                'matiere_id' => $matiere,
-                'semestre_id' => $semestre,
-                'matricule' => $matricules[$etudiantId],
-                'filiere_id' => $filieres[$etudiantId],
-                'cycle_id' => $cycles[$etudiantId],
-                'niveauetude_id' => $niveauetudes[$etudiantId],
-                'coefficient' => $coefficient,
-            ]);
+        if ($notes) {
+            foreach ($notes as $studentId => $noteValue) {
+                // Ici, vous pouvez enregistrer la note dans votre base de données
+                $note = new Note();
+                $note->eleve_id = $studentId;
+                $note->eleve_id = $request->input('eleve_id')[$studentId];
+                $note->filiere_id = $request->input('filiere_id')[$studentId];
+                $note->cycle_id = $request->input('cycle_id')[$studentId];
+                $note->niveauetude_id = $request->input('niveauetude_id')[$studentId];
+                $note->matricule = $request->input('matricule')[$studentId];
+                $note->matiere_id = $request->input('matiere_id');
+                $note->semestre_id = $request->input('semestre_id');
+                $note->coefficient = $request->input('coefficient');
+                $note->note = $noteValue;
+                $note->save();
+            }
         }
 
-        // Redirigez l'utilisateur vers une autre page ou effectuez d'autres actions après l'enregistrement des notes.
+        // Le reste de votre logique de traitement...
 
-        return redirect()->back()->with('success', 'Les notes ont été enregistrées avec succès.');
+        // Redirigez l'utilisateur ou effectuez d'autres actions après avoir enregistré les notes
+        return redirect()->back()->with('message', 'Notes enregistrées avec succès !');
     }
+
+    // Rediriger vers une page de succès
 
     public function show(string $id)
     {

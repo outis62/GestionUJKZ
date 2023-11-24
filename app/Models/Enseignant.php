@@ -32,7 +32,7 @@ class Enseignant extends Model
     ];
     public function matiere()
     {
-        return $this->belongsTo(Matiere::class);
+        return $this->hasMany(Matiere::class);
     }
     public function cycle()
     {

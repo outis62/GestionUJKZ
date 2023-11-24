@@ -48,7 +48,7 @@ class HomeController extends Controller
         $anneeuniversitaire = new Anneeuniversitaire();
         $anneeuniversitaire->anneeuniversitaire = $request->input('anneeuniversitaire');
         $anneeuniversitaire->save();
-        return redirect()->back()->with('success', 'anneeuniversitaire ajouté avec succès');
+        return redirect()->back()->with('message', 'Année universitaire ajoutée avec succès !');
     }
     public function listeanneeuniv()
     {
@@ -72,7 +72,7 @@ class HomeController extends Controller
         $cycle->cycle = $request->input('cycle');
         $cycle->save();
 
-        return redirect()->back()->with('success', 'Cycle ajouté avec succès');
+        return redirect()->back()->with('message', 'Cycle ajouté avec succès !');
     }
     public function listecycle()
     {
@@ -95,7 +95,7 @@ class HomeController extends Controller
         $filiere = new Filiere();
         $filiere->filiere = $request->filiere;
         $filiere->save();
-        return redirect()->back()->with('success', 'filiere ajouté avec succès');
+        return redirect()->back()->with('message', 'Filière ajoutée avec succès !');
     }
     public function ListeFiliere()
     {
@@ -118,7 +118,7 @@ class HomeController extends Controller
         $niveauetude = new Niveauetude();
         $niveauetude->niveauetude = $request->niveauetude;
         $niveauetude->save();
-        return redirect()->back()->with('success', 'niveau ajouté avec succès');
+        return redirect()->back()->with('message', 'Niveau d\'étude ajouté avec succès !');
     }
     public function listeniveauetude()
     {
@@ -141,7 +141,7 @@ class HomeController extends Controller
         $nationalite = new Nationalite();
         $nationalite->nationalite = $request->nationalite;
         $nationalite->save();
-        return redirect()->back()->with('success', 'niveau ajouté avec succès');
+        return redirect()->back()->with('message', 'Nationalité ajoutée avec succès !');
     }
     public function listenationalite()
     {
@@ -163,7 +163,7 @@ class HomeController extends Controller
         Genre::create([
             'genre' => $request->genre,
         ]);
-        return redirect()->back()->with('success', 'genre ajouté avec succès');
+        return redirect()->back()->with('message', 'Genre ajouté avec succès !');
     }
     public function listegenre()
     {
@@ -185,7 +185,7 @@ class HomeController extends Controller
         Semestre::create([
             'semestre' => $request->semestre,
         ]);
-        return redirect()->back()->with('success', 'semestre ajouté avec succès');
+        return redirect()->back()->with('message', 'Semestre ajouté avec succès !');
     }
     public function listesemestre()
     {
@@ -196,7 +196,8 @@ class HomeController extends Controller
     }
     public function matiere()
     {
-        return view('parametre.matiere');
+        $filiere = Filiere::all();
+        return view('parametre.matiere', ['filiere' => $filiere]);
     }
     public function ajoutmatiere(Request $request)
     {
@@ -204,12 +205,15 @@ class HomeController extends Controller
         $request->validate([
             'matiere' => 'required|string|max:255',
             'coefficient' => 'required|integer|max:255',
+            'filiere_id' => 'required',
         ]);
         Matiere::create([
             'matiere' => $request->matiere,
             'coefficient' => $request->coefficient,
+            'filiere_id' => $request->filiere_id,
+
         ]);
-        return redirect()->back()->with('success', 'matiere ajouté avec succès');
+        return redirect()->back()->with('message', 'Matière ajoutée avec succès !');
     }
     public function listematiere()
     {

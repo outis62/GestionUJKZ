@@ -12,13 +12,18 @@ class Matiere extends Model
     protected $fillable = [
         'matiere',
         'coefficient',
+        'filiere_id',
     ];
     public function enseignant()
     {
-        return $this->hasMany(Enseignant::class);
+        return $this->belongsTo(Enseignant::class);
     }
     public function note()
     {
         return $this->hasMany(Note::class);
+    }
+    public function filiere()
+    {
+        return $this->belongsTo(Filiere::class);
     }
 }

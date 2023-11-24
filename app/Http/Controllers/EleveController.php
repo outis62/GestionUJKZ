@@ -11,6 +11,9 @@ use App\Models\Filiere;
 use App\Models\Genre;
 use App\Models\Nationalite;
 use App\Models\Niveauetude;
+use App\Models\Tuteur;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class EleveController extends Controller
@@ -99,4 +102,34 @@ class EleveController extends Controller
         $eleve->delete();
         return redirect()->back()->with('success', 'Etudiant supprimer avec succès !');
     }
+
+    public function searchTuteurs(Request $request)
+    {
+        try {
+            $query = $request->input('query');
+
+            // Sépare la chaîne de recherche en termes
+            $terms = explode(' ', $query);
+
+            // Commence la requête en filtrant par nom
+            $queryBuilder = Tuteur::query()->where('nom', 'LIKE', "%{$terms[0]}%");
+
+            // Ajoute des conditions supplémentaires pour chaque terme restant
+            foreach (array_slice($terms, 1) as $term) {
+                $queryBuilder->where('prenom', 'LIKE', "%{$term}%");
+            }
+
+            // Exécute la requête
+            $tuteurs = $queryBuilder->get();
+
+            return response()->json($tuteurs);
+        } catch (\Exception $e) {
+            // Log l'erreur dans le fichier de log de Laravel
+            Log::error('Erreur lors de la recherche des tuteurs: ' . $e->getMessage());
+
+            // Retourne une réponse JSON avec un message d'erreur
+            return response()->json(['error' => 'Erreur lors de la recherche des tuteurs'], 500);
+        }
+    }
+
 }

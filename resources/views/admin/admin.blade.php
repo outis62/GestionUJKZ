@@ -20,8 +20,8 @@
             </div>
             <div class="row">
                 @if (\Session::has('message'))
-                    <div class="alert alert-light">
-                        <h4>{{ \Session::get('message') }}</h4>
+                    <div class="alert alert-success opacity-50">
+                        <h4 class="text-center">{{ \Session::get('message') }}</h4>
                     </div>
                 @endif
                 <div class="offset-3 col-lg-8 col-8">

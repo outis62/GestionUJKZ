@@ -20,8 +20,8 @@
             </div>
             <div class="row">
                 @if (\Session::has('message'))
-                    <div class="alert alert-light">
-                        <h4>{{ \Session::get('message') }}</h4>
+                    <div class="alert alert-success opacity-50">
+                        <h4 class="text-center">{{ \Session::get('message') }}</h4>
                     </div>
                 @endif
                 <div class="offset-3 col-lg-8 col-8">
@@ -138,8 +138,13 @@
                         <div class="inputForm">
                             <i class="fa fa-user text-black"></i>
                             <label for="tuteur" class="mt-2 ms-2 text-black">Tuteur</label>
-                            <input type="text" id="tuteur" name="tuteur_id" class="input" required>
+                            <input type="text" id="tuteur" class="input" placeholder="Nom du tuteur" required>
+                            <!-- Ajoutez un champ caché pour stocker l'ID du tuteur -->
+                            <input type="hidden" name="tuteur_id" value="">
+                            <!-- Ajoutez une liste déroulante pour afficher les résultats de la recherche -->
+                            <select id="tuteurs" class="form-select" style="color: white!important" multiple></select>
                         </div>
+
                         <div class="inputForm">
                             <label for="photo" class="text-black">Photo</label>
                             <i class="fa fa-image mb-1 ms-2" class="text-black"></i>

@@ -36,6 +36,7 @@ class StoreEleveRequest extends FormRequest
             'password' => 'required|string|max:255',
             'confirmerpassword' => 'required|string|max:255',
             'telephone' => 'required',
+            'tuteur_id' => 'required',
             'image' => 'required',
         ];
     }

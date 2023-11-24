@@ -9,7 +9,23 @@ use Illuminate\Database\Eloquent\Model;
 class Eleve extends Model
 {
     use HasFactory, HasUuids;
-    protected $fillable = ['nom', 'prenom', 'telephone', 'email', 'genre_id', 'cycle_id', 'filiere_id', 'niveauetude_id', 'anneeuniversitaire_id', 'nationalite_id', 'matricule', 'datenaissance', 'password', 'confirmerpassword', 'image'];
+    protected $fillable = [
+        'nom',
+        'prenom',
+        'telephone',
+        'email', 'genre_id',
+        'cycle_id',
+        'filiere_id',
+        'niveauetude_id',
+        'anneeuniversitaire_id',
+        'nationalite_id',
+        'matricule',
+        'datenaissance',
+        'tuteur_id',
+        'password',
+        'confirmerpassword',
+        'image',
+    ];
 
     protected $hidden = [
         'password',

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BULLETIN-UNIV</title>
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-5.2.3-dist/css/bootstrap.min.css') }}">
@@ -50,8 +49,9 @@
         </script>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
-                $("#enseignant").DataTable({
+                var table = $('#enseignant').DataTable({
                     responsive: true,
+                    retrieve: true,
                     //changer le message de la pagination
                     "language": {
                         "paginate": {
@@ -63,29 +63,26 @@
                         "zeroRecords": "Aucun élement trouvé",
                         "info": "Page _PAGE_ sur _PAGES_",
                     }
-
                 });
-            });
-        </script>
-        <script>
-            $('#tuteur').keyup(function() {
-                $.ajax({
-                    url: '/tuteur',
-                    type: 'GET',
-                    data: {
-                        tuteur: this.value
-                    },
-                    success: function(tuteurs) {
-                        $('#tuteurs').empty();
-                        $.each(tuteurs, function(index, tuteur) {
-                            $('#tuteurs').append('<tr><td>' + tuteur.nom + '</td><td>' + tuteur
-                                .prenom + '</td><td>' + tuteur.telephone + '</td></tr>'
-                            );
-                        });
 
+                // Lorsque vous voulez réinitialiser le tableau
+                table.destroy();
+
+                table = $('#enseignant').DataTable({
+                    responsive: true,
+                    retrieve: true,
+                    //changer le message de la pagination
+                    "language": {
+                        "paginate": {
+                            "previous": "Précédent",
+                            "next": "Suivant"
+                        },
+                        "search": "Rechercher",
+                        "lengthMenu": "Afficher _MENU_ éléments",
+                        "zeroRecords": "Aucun élement trouvé",
+                        "info": "Page _PAGE_ sur _PAGES_",
                     }
                 });
-
             });
         </script>
 </body>

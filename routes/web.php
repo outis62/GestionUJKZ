@@ -79,7 +79,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('classe', [EtudiantController::class, 'classe'])->name('classe');
     Route::get('listeELN2', [EtudiantController::class, 'listeELN2'])->name('listeELN2');
+    Route::get('ELN1', [EtudiantController::class, 'ListeEln1'])->name('ListeEln1');
+    Route::get('ELN3', [EtudiantController::class, 'ListeEln3'])->name('ListeEln3');
+
     Route::get('/supprimer/{id}/filiere', [ParametreController::class, 'delete'])->name('delete');
+    Route::get('supprimer/matière/{matiere}', [ParametreController::class, 'supprimermatiere'])->name('supprimermatiere');
+    Route::get('supprimer/niveauetude/{niveauetude}', [ParametreController::class, 'supprimerniveau'])->name('supprimerniveau');
 
     Route::post('AjoutNote', [EtudiantController::class, 'enregistrerNotes'])->name('enregistrerNotes');
 
@@ -88,6 +93,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('tuteur', TuteurController::class);
     Route::get('tuteur/supprimer/{tuteur}', [TuteurController::class, 'destroy'])->name('supprimertuteur');
+    Route::get('/search-tuteurs', [EleveController::class, 'searchTuteurs'])->name('search.tuteurs');
 
 });
 

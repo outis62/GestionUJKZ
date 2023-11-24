@@ -4,8 +4,8 @@
     <section class="content">
         <div class="container-fluid">
             @if (\Session::has('message'))
-                <div class="alert alert-light">
-                    <h4>{{ \Session::get('message') }}</h4>
+                <div class="alert alert-success opacity-50">
+                    <h4 class="text-center">{{ \Session::get('message') }}</h4>
                 </div>
             @endif
             <div class="row">

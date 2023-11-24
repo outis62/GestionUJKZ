@@ -5,7 +5,7 @@
         <div class="container-fluid">
             @if (\Session::has('success'))
                 <div class="alert alert-danger">
-                    <h4>{{ \Session::get('success') }}</h4>
+                    <h4 class="text-center">{{ \Session::get('success') }}</h4>
                 </div>
             @endif
             <div class="row">
