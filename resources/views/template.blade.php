@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BULLETIN-UNIV</title>
+    <title>{{ config('app.name') }}</title>
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}">
@@ -17,7 +17,7 @@
         @include('templates.header')
         <aside class="main-sidebar sidebar-secondary elevation-4">
             <a href="/" class="brand-link text-decoration-none">
-                <h5 class="text-white fw-bold text-center ms-5 mt-4">BULLETIN-UNIV</h5>
+                <h5 class="text-white fw-bold text-center ms-5 mt-4">{{ config('app.name') }}</h5>
                 <a href="https://www.ujkz.bf"><img src="dist/img/UJKZ-arriere.png" alt="UJKZ Logo" width="50"
                         height="50" class="brand-image img-circ elevation-3"
                         style="margin-left:10px!important; margin-top:20px!important;" /></a>

@@ -1,5 +1,4 @@
 @extends('template')
-
 @section('page-content')
     <section class="content">
         <div class="container-fluid">

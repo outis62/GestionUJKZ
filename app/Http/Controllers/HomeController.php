@@ -18,6 +18,10 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
 
+    public function accueil()
+    {
+        return view('accueil.accueil');
+    }
     public function home()
     {
         $user = User::all();

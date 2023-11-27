@@ -13,7 +13,7 @@
                     <div class="small-box bg-white boardaccueil">
                         <div class="inner ms-3">
                             <p class="fw-bold fs-6" style="color: lightseagreen;">Bienvenue dans votre tableau de bord de
-                                bulletin univ M. {{ Auth::user()->name }}</p>
+                                {{ config('app.name') }} M. {{ Auth::user()->name }}</p>
                             <p>Vous pouvez <b>gérer éfficacement les aspects et opérations liées </br> à votre compte.</b>
                                 <strong class="text-warning">Vous êtes en train d'inscrire un tuteur</strong>
                             </p>

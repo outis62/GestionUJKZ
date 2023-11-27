@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RegisterMail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -43,13 +45,15 @@ class AdminController extends Controller
             'password_confirmation' => 'required|string|max:255',
             'role' => 'required|string|max:255',
         ]);
-        User::create([
+        $email = $request['email'];
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
             'password_confirmation' => $request->password_confirmation,
             'role' => $request->role,
         ]);
+        Mail::to($email)->send(new RegisterMail($user));
         return back()->with('message', 'L\'administrateur a bien été enregistré !');
     }
 

@@ -16,9 +16,10 @@ a {
 }
 
 body {
-    background: rgba(2, 0, 36, 1);
+    background: rgb(5, 1, 72);
     /* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 30%, rgba(51, 151, 78, 1) 50%, rgba(10, 100, 0, 10) 100%); */
 }
+
 
 #circle {
     background: lightseagreen;

@@ -7,7 +7,7 @@
                     <div class="small-box bg-white boardaccueil">
                         <div class="inner ms-3">
                             <p class="fw-bold fs-6" style="color: lightseagreen;">Bienvenue dans votre tableau de bord de
-                                bulletin univ M. {{ Auth::user()->name }}</p>
+                                {{ config('app.name') }} M. {{ Auth::user()->name }}</p>
                             <p>Vous pouvez <b>gérer éfficacement les aspects et opérations liées </br> à votre compte.</b>
                                 <strong class="text-warning">Vous êtes en train d'inscrire un.e étudiant.e.</strong>
                             </p>
@@ -139,10 +139,10 @@
                             <i class="fa fa-user text-black"></i>
                             <label for="tuteur" class="mt-2 ms-2 text-black">Tuteur</label>
                             <input type="text" id="tuteur" class="input" placeholder="Nom du tuteur" required>
-                            <!-- Ajoutez un champ caché pour stocker l'ID du tuteur -->
                             <input type="hidden" name="tuteur_id" value="">
-                            <!-- Ajoutez une liste déroulante pour afficher les résultats de la recherche -->
-                            <select id="tuteurs" class="form-select" style="color: white!important" multiple></select>
+                            <select id="tuteurs" class="form-select"
+                                style="color: black; height:50px; background:white; border:lightseagreen;"
+                                multiple></select>
                         </div>
 
                         <div class="inputForm">

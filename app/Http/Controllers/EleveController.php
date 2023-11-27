@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEleveRequest;
 use App\Http\Requests\UpdateEleveRequest;
+use App\Mail\EleveRegisteredMail;
 use App\Models\Anneeuniversitaire;
 use App\Models\Cycle;
 use App\Models\Eleve;
@@ -14,6 +15,7 @@ use App\Models\Niveauetude;
 use App\Models\Tuteur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class EleveController extends Controller
@@ -66,7 +68,8 @@ class EleveController extends Controller
             $path = $request->file('image')->store('images');
             $inputs['image'] = $path;
         }
-        Eleve::create($inputs);
+        $eleve = Eleve::create($inputs);
+        Mail::to($eleve->email)->send(new EleveRegisteredMail($eleve));
         return redirect()->route('Eleve.index')->with('message', 'Etudiant ajouté avec succès !');
     }
 
