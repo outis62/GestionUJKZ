@@ -94,45 +94,53 @@
                             <h4 class="text-center">{{ \Session::get('message') }}</h4>
                         </div>
                     @endif
-                    <div class="table-responsive" id="enseignant_table">
-                        <table id="enseignant" class="table table-default listeenseignant">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Nom</th>
-                                    <th>Prénom</th>
-                                    <th>Téléphone</th>
-                                    <th>Email</th>
-                                    <th class="text-center">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($enseignant as $enseignant)
+                    @if ($enseignant->count() > 0)
+                        <div class="table-responsive" id="enseignant_table">
+                            <table id="enseignant" class="table table-default listeenseignant">
+                                <thead>
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $enseignant->nom }}</td>
-                                        <td>{{ $enseignant->prenom }}</td>
-                                        <td>{{ $enseignant->telephone }}</td>
-                                        <td>{{ $enseignant->email }}</td>
-                                        <td style="display:flex;">
-                                            <a href="javascript:void(0);" class="btn btn-info ms-3"><i
-                                                    class="fa fa-info"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-success ms-1"><i
-                                                    class="fa fa-pen"></i></a>
-                                            <form action="{{ route('enseignant.destroy', $enseignant->id) }}"
-                                                method="POST" class="ms-1">
-                                                @csrf
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btn btn-danger delete"><i
-                                                        class="fa fa-trash"></i></a></button>
-                                            </form>
-                                        </td>
+                                        <th>#</th>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Téléphone</th>
+                                        <th>Email</th>
+                                        <th class="text-center">Actions</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
+                                </thead>
+                                <tbody>
+                                    @foreach ($enseignant as $enseignant)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $enseignant->nom }}</td>
+                                            <td>{{ $enseignant->prenom }}</td>
+                                            <td>{{ $enseignant->telephone }}</td>
+                                            <td>{{ $enseignant->email }}</td>
+                                            <td style="display:flex;">
+                                                <a href="javascript:void(0);" class="btn btn-info ms-3"><i
+                                                        class="fa fa-info"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-success ms-1"><i
+                                                        class="fa fa-pen"></i></a>
+                                                <form action="{{ route('enseignant.destroy', $enseignant->id) }}"
+                                                    method="POST" class="ms-1">
+                                                    @csrf
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <button type="submit" class="btn btn-danger delete"><i
+                                                            class="fa fa-trash"></i></a></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
 
-                        </table>
-                    </div>
+                            </table>
+                        </div>
+                    @else
+                        <div class="small-box bg-white mt-5">
+                            <div class="inner ms-3">
+                                <p class="fs-6 text-warning text-center">Aucun enseignant constaté pour le moment 👦</p>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div><!-- /.container-fluid -->

@@ -44,7 +44,7 @@ class EnseignantController extends Controller
         // dd($request->all());
         $inputs = $request->validated();
         Enseignant::create($inputs);
-        return redirect()->back()->with('message', 'Inscription enseignant reussi !');
+        return redirect()->back()->with('message', 'Inscription enseignant reussi 😉');
     }
 
     /**
@@ -77,6 +77,6 @@ class EnseignantController extends Controller
     public function destroy(Enseignant $enseignant)
     {
         $enseignant->delete();
-        return redirect()->back()->with('success', 'Enseignant supprimer avec succes !');
+        return redirect()->back()->with('success', 'Enseignant supprimer avec succes 😓');
     }
 }

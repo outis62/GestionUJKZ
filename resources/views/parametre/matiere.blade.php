@@ -19,8 +19,8 @@
                         </div>
                         <div class="mt-4" style="margin-left: 170px!important;"><a type="btn" class="btn btn-primary"
                                 href="{{ 'listematiere' }}">Liste <i class="fa fa-book"></i></a> <a type="btn"
-                                class="btn btn-secondary" href="javascript:void(0);"><i class="fa fa-backward"></i>
-                                Retour</a></div>
+                                class="btn btn-secondary" href="{{ route('home') }}"><i class="fa fa-backward"></i>
+                                Accueil</a></div>
                     </div>
                 </div>
             </div>

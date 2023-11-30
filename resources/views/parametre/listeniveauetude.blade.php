@@ -17,36 +17,46 @@
                             class="fa fa-file"></i></a>
                     <a href="{{ route('home') }}" type="button" class="btn btn-info"><i class="fa fa-backward"></i>
                         Retour</a>
-                    <div class="table-responsive">
-                        <table id="enseignant" class="table table-default listeenseignant">
-                            <thead>
-                                <tr>
-                                    <th>N°</th>
-                                    <th>Niveau</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                    $compteur = 1;
-                                @endphp
-                                @foreach ($niveauetude as $niveauetude)
+                    @if ($niveauetude->count() > 0)
+                        <div class="table-responsive">
+                            <table id="enseignant" class="table table-default listeenseignant">
+                                <thead>
                                     <tr>
-                                        <td>{{ $compteur }}</td>
-                                        <td>{{ $niveauetude->niveauetude }}</td>
-                                        <td style="width: 130px;">
-                                            <a href="{{ route('supprimerniveau', $niveauetude->id) }}"
-                                                class="btn btn-danger d-inline mt-1 delete"><i class="fa fa-trash"></i></a>
-                                        </td>
+                                        <th>N°</th>
+                                        <th>Niveau</th>
+                                        <th>Actions</th>
                                     </tr>
+                                </thead>
+                                <tbody>
                                     @php
-                                        $compteur++;
+                                        $compteur = 1;
                                     @endphp
-                                @endforeach
+                                    @foreach ($niveauetude as $niveauetude)
+                                        <tr>
+                                            <td>{{ $compteur }}</td>
+                                            <td>{{ $niveauetude->niveauetude }}</td>
+                                            <td style="width: 130px;">
+                                                <a href="{{ route('supprimerniveau', $niveauetude->id) }}"
+                                                    class="btn btn-danger d-inline mt-1 delete"><i
+                                                        class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        @php
+                                            $compteur++;
+                                        @endphp
+                                    @endforeach
 
-                            </tbody>
-                        </table>
-                    </div>
+                                </tbody>
+                            </table>
+                        </div>
+                    @else
+                        <div class="small-box bg-white mt-5">
+                            <div class="inner ms-3">
+                                <p class="fs-6 text-warning text-center">Aucun niveau d'étude constatée pour le moment
+                                    🎡</p>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div><!-- /.container-fluid -->

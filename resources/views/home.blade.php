@@ -48,13 +48,13 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-white">
                         <div class="inner">
-                            <p>Etudiants par cycles</p>
-                            <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i> <b>#</b>
+                            <p>Tuteur</p>
+                            <i class="fa fa-graduation-cap" style="color: lightseagreen;"></i> <b>#{{ $tuteur }}</b>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="javascript:void(0);" class="small-box-footer text-white">Voir plus <i
+                        <a href="{{ route('tuteur.index') }}" class="small-box-footer text-white">Voir plus <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -83,8 +83,12 @@
                         <div class="icon">
                             <i class="ion ion-bag"></i>
                         </div>
-                        <a href="{{ route('admin.create') }}" class="small-box-footer text-white">Voir plus <i
-                                class="fas fa-arrow-circle-right"></i></a>
+                        @if (Auth::user()->role != 'admin' && Auth::user()->role != 'enseignant' && Auth::user()->role != 'etudiant')
+                            <a href="{{ route('admin.create') }}" class="small-box-footer text-white">
+                                Voir plus
+                                <i class="fas fa-arrow-circle-right"></i>
+                        @endif
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">

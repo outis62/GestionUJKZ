@@ -17,36 +17,45 @@
                             class="fa fa-file"></i></a>
                     <a href="{{ route('home') }}" type="button" class="btn btn-info"><i class="fa fa-backward"></i>
                         Retour</a>
-                    <div class="table-responsive">
-                        <table id="enseignant" class="table table-default listeenseignant">
-                            <thead>
-                                <tr>
-                                    <th>N°</th>
-                                    <th>Genre</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                    $compteur = 1;
-                                @endphp
-                                @foreach ($genre as $genre)
+                    @if ($genre->count() > 0)
+                        <div class="table-responsive">
+                            <table id="enseignant" class="table table-default listeenseignant">
+                                <thead>
                                     <tr>
-                                        <td>{{ $compteur }}</td>
-                                        <td>{{ $genre->genre }}</td>
-                                        <td style="width: 130px;">
-                                            <a href="javascript:void(0);" class="btn btn-danger d-inline mt-1 delete"><i
-                                                    class="fa fa-trash"></i></a>
-                                        </td>
+                                        <th>N°</th>
+                                        <th>Genre</th>
+                                        <th>Actions</th>
                                     </tr>
+                                </thead>
+                                <tbody>
                                     @php
-                                        $compteur++;
+                                        $compteur = 1;
                                     @endphp
-                                @endforeach
+                                    @foreach ($genre as $genre)
+                                        <tr>
+                                            <td>{{ $compteur }}</td>
+                                            <td>{{ $genre->genre }}</td>
+                                            <td style="width: 130px;">
+                                                <a href="javascript:void(0);" class="btn btn-danger d-inline mt-1 delete"><i
+                                                        class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        @php
+                                            $compteur++;
+                                        @endphp
+                                    @endforeach
 
-                            </tbody>
-                        </table>
-                    </div>
+                                </tbody>
+                            </table>
+                        </div>
+                    @else
+                        <div class="small-box bg-white mt-5">
+                            <div class="inner ms-3">
+                                <p class="fs-6 text-warning text-center">Aucun genre constaté pour le moment
+                                    🎡</p>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div><!-- /.container-fluid -->

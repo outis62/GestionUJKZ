@@ -13,6 +13,6 @@ class TuteurSeeder extends Seeder
      */
     public function run(): void
     {
-        Tuteur::factory(100)->create();
+        Tuteur::factory(70)->create();
     }
 }

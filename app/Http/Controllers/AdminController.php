@@ -54,7 +54,8 @@ class AdminController extends Controller
             'role' => $request->role,
         ]);
         Mail::to($email)->send(new RegisterMail($user));
-        return back()->with('message', 'L\'administrateur a bien été enregistré !');
+        return back()->with('message', 'L\'administrateur a bien été enregistré 😉
+        ');
     }
 
     /**
@@ -87,6 +88,7 @@ class AdminController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->back()->with('success', 'administrateur supprimer avec succes !');
+        return redirect()->back()->with('success', 'administrateur supprimer avec succes 😓
+        ');
     }
 }

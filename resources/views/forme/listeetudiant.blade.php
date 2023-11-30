@@ -13,46 +13,56 @@
                     <a href="{{ route('Eleve.index') }}" type="button" class="btn btn-primary">Ajouter un étudiant</a>
                     <a href="{{ route('home') }}" type="button" class="btn btn-info"><i class="fa fa-backward"></i>
                         Retour</a>
-                    <div class="table-responsive">
-                        <table id="enseignant" class="table table-default">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Nom</th>
-                                    <th>Prénom</th>
-                                    <th>Téléphone</th>
-                                    <th>Email</th>
-                                    <th>Tuteur</th>
-                                    <th class="text-center">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($eleve as $eleve)
+                    @if ($eleve->count() > 0)
+                        <div class="table-responsive">
+                            <table id="enseignant" class="table table-default">
+                                <thead>
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $eleve->nom }}</td>
-                                        <td>{{ $eleve->prenom }}</td>
-                                        <td>{{ $eleve->telephone }}</td>
-                                        <td>{{ $eleve->email }}</td>
-                                        <td>{{ $eleve->tuteur->nom }} {{ $eleve->tuteur->prenom }}</td>
-                                        <td style="width: 130px;">
-                                            <a href="javascript:void(0);" data-toggle="dropdown" class="btn btn-info"><i
-                                                    class="fa fa-info"></i></a>
-                                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
-                                                <a href="javascript:void(0);" class="dropdown-item text-center">Etudiant</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a href="javascript:void(0);" class="dropdown-item text-center">Tuteur</a>
-                                            </div>
-                                            <a href="javascript:void(0);" class="btn btn-success d-iniline"><i
-                                                    class="fa fa-pen"></i></a>
-                                            <a href="{{ route('supprimereleve', $eleve->id) }}"
-                                                class="btn btn-danger d-inline mt-1"><i class="fa fa-trash"></i></a>
-                                        </td>
+                                        <th>#</th>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Téléphone</th>
+                                        <th>Email</th>
+                                        <th>Tuteur</th>
+                                        <th class="text-center">Actions</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                </thead>
+                                <tbody>
+                                    @foreach ($eleve as $eleve)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $eleve->nom }}</td>
+                                            <td>{{ $eleve->prenom }}</td>
+                                            <td>{{ $eleve->telephone }}</td>
+                                            <td>{{ $eleve->email }}</td>
+                                            <td>{{ $eleve->tuteur->nom }} {{ $eleve->tuteur->prenom }}</td>
+                                            <td style="width: 130px;">
+                                                <a href="javascript:void(0);" data-toggle="dropdown" class="btn btn-info"><i
+                                                        class="fa fa-info"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
+                                                    <a href="javascript:void(0);"
+                                                        class="dropdown-item text-center">Etudiant</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a href="javascript:void(0);"
+                                                        class="dropdown-item text-center">Tuteur</a>
+                                                </div>
+                                                <a href="javascript:void(0);" class="btn btn-success d-iniline"><i
+                                                        class="fa fa-pen"></i></a>
+                                                <a href="{{ route('supprimereleve', $eleve->id) }}"
+                                                    class="btn btn-danger d-inline mt-1"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @else
+                        <div class="small-box bg-white mt-5">
+                            <div class="inner ms-3">
+                                <p class="fs-6 text-warning text-center">Aucun étudiant constaté pour le moment 👦</p>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

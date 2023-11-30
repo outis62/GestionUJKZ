@@ -12,6 +12,7 @@ use App\Models\Matiere;
 use App\Models\Nationalite;
 use App\Models\Niveauetude;
 use App\Models\Semestre;
+use App\Models\Tuteur;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -30,6 +31,7 @@ class HomeController extends Controller
         $filiere = Filiere::count();
         $matiere = Matiere::count();
         $nationalite = Nationalite::count();
+        $tuteur = Tuteur::count();
         return view('home', [
             'enseignant' => $enseignant,
             'eleve' => $eleve,
@@ -37,6 +39,7 @@ class HomeController extends Controller
             'matiere' => $matiere,
             'nationalite' => $nationalite,
             'user' => $user,
+            'tuteur' => $tuteur,
         ]);
     }
     public function anneeuniversitaire()
@@ -52,7 +55,8 @@ class HomeController extends Controller
         $anneeuniversitaire = new Anneeuniversitaire();
         $anneeuniversitaire->anneeuniversitaire = $request->input('anneeuniversitaire');
         $anneeuniversitaire->save();
-        return redirect()->back()->with('message', 'Année universitaire ajoutée avec succès !');
+        return redirect()->back()->with('message', 'Année universitaire ajoutée avec succès 🎇
+        ');
     }
     public function listeanneeuniv()
     {
@@ -76,7 +80,8 @@ class HomeController extends Controller
         $cycle->cycle = $request->input('cycle');
         $cycle->save();
 
-        return redirect()->back()->with('message', 'Cycle ajouté avec succès !');
+        return redirect()->back()->with('message', 'Cycle ajouté avec succès 🎇
+        ');
     }
     public function listecycle()
     {
@@ -99,7 +104,8 @@ class HomeController extends Controller
         $filiere = new Filiere();
         $filiere->filiere = $request->filiere;
         $filiere->save();
-        return redirect()->back()->with('message', 'Filière ajoutée avec succès !');
+        return redirect()->back()->with('message', 'Filière ajoutée avec succès 🎇
+        ');
     }
     public function ListeFiliere()
     {
@@ -122,7 +128,8 @@ class HomeController extends Controller
         $niveauetude = new Niveauetude();
         $niveauetude->niveauetude = $request->niveauetude;
         $niveauetude->save();
-        return redirect()->back()->with('message', 'Niveau d\'étude ajouté avec succès !');
+        return redirect()->back()->with('message', 'Niveau d\'étude ajouté avec succès 🎇
+        ');
     }
     public function listeniveauetude()
     {
@@ -145,7 +152,8 @@ class HomeController extends Controller
         $nationalite = new Nationalite();
         $nationalite->nationalite = $request->nationalite;
         $nationalite->save();
-        return redirect()->back()->with('message', 'Nationalité ajoutée avec succès !');
+        return redirect()->back()->with('message', 'Nationalité ajoutée avec succès 🎌
+        ');
     }
     public function listenationalite()
     {
@@ -167,7 +175,7 @@ class HomeController extends Controller
         Genre::create([
             'genre' => $request->genre,
         ]);
-        return redirect()->back()->with('message', 'Genre ajouté avec succès !');
+        return redirect()->back()->with('message', 'Genre ajouté avec succès 👨‍👦');
     }
     public function listegenre()
     {
@@ -189,7 +197,8 @@ class HomeController extends Controller
         Semestre::create([
             'semestre' => $request->semestre,
         ]);
-        return redirect()->back()->with('message', 'Semestre ajouté avec succès !');
+        return redirect()->back()->with('message', 'Semestre ajouté avec succès 🎇
+        ');
     }
     public function listesemestre()
     {
@@ -217,7 +226,8 @@ class HomeController extends Controller
             'filiere_id' => $request->filiere_id,
 
         ]);
-        return redirect()->back()->with('message', 'Matière ajoutée avec succès !');
+        return redirect()->back()->with('message', 'Matière ajoutée avec succès 🎇
+        ');
     }
     public function listematiere()
     {

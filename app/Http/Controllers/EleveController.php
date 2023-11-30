@@ -70,7 +70,7 @@ class EleveController extends Controller
         }
         $eleve = Eleve::create($inputs);
         Mail::to($eleve->email)->send(new EleveRegisteredMail($eleve));
-        return redirect()->route('Eleve.index')->with('message', 'Etudiant ajouté avec succès !');
+        return redirect()->route('Eleve.index')->with('message', 'Etudiant ajouté avec succès 😉');
     }
 
     /**
@@ -103,7 +103,7 @@ class EleveController extends Controller
     public function destroy(Eleve $eleve)
     {
         $eleve->delete();
-        return redirect()->back()->with('success', 'Etudiant supprimer avec succès !');
+        return redirect()->back()->with('success', 'Etudiant supprimer avec succès 🙆');
     }
 
     public function searchTuteurs(Request $request)

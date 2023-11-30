@@ -4,13 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('dist/css/bootstrap.5.0.0.min.css') }}">
     <link href="../asset/glass.css" rel="stylesheet">
-    <link rel="shortcut icon" href="../dist/img/logobu2.png">
+    <link rel="shortcut icon" href="{{ asset('../dist/img/logobu2.png') }}">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <link href="{{ asset('dist/css/accueil.css') }}" rel="stylesheet">
-    <title>Bulletin-Univ/UJKZ</title>
+    <title>{{ config('app.name') }}</title>
 </head>
 
 <body>
@@ -89,7 +88,7 @@
                         </div>
                         <div class="col-md-3 appareildetail">
                             <img src="{{ asset('dist/img/mobilephone.svg') }}" width="60" height="50"
-                                class="mt-3" alt="mobile phone">
+                                class="mt-3" alt="mobile-phone">
                             <p>tincidunt sit malesuada laoreet vel suscipit Morbi eu sapien suscipit </p>
                         </div>
                     </div>
@@ -108,7 +107,8 @@
                 </div>
                 <div class="col-md-6">
                     <h3 class="text-white text-center fw-bold fs-2">Nos Avantages</h3>
-                    <p class="text-white justify-content-center">sapien consectetur nibh ipsum vestibulum vitae ipsum
+                    <p class="text-white justify-content-center">sapien consectetur nibh ipsum vestibulum vitae
+                        ipsum
                         lacinia elit. elit. nibh
                         lacinia bibendum et amet, dolor, lacinia. Sed massa vestibulum ullamcorper risus dolor, sapien
                         sit. bibendum tristique. Lorem vestibulum aliquet tellus dolor, at vitae auctor laoreet at Nulla
@@ -130,7 +130,7 @@
     <section class="container-fluid" id="partenaire">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 col-lg-12">
                     <h3 class="text-white text-center fw-bold fs-2">Nos Partenaires</h3>
                     <p class="text-white">sapien consectetur nibh ipsum vestibulum vitae ipsum lacinia elit. elit. nibh
                         lacinia bibendum et amet, dolor, lacinia. Sed massa vestibulum ullamcorper risus dolor, sapien
@@ -184,19 +184,7 @@
     </section>
     @include('accueil.footer')
     <div id="circle2"></div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
-    </script>
-    <script>
-        window.onscroll = function() {
-            var nav = document.querySelector('nav');
-            if (window.pageYOffset > 0) {
-                nav.classList.add('scrolling');
-            } else {
-                nav.classList.remove('scrolling');
-            }
-        };
-    </script>
+    <script src="{{ asset('dist/css/bootstrap.5.0.0.min.js') }}"></script>
 </body>
 
 </html>
