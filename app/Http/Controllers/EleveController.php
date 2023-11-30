@@ -102,8 +102,11 @@ class EleveController extends Controller
      */
     public function destroy(Eleve $eleve)
     {
+        $eleveName = $eleve->nom;
+        $elevePrenom = $eleve->prenom;
+        $eleveFullName = $eleveName . '  ' . $elevePrenom;
         $eleve->delete();
-        return redirect()->back()->with('success', 'Etudiant supprimer avec succès 🙆');
+        return redirect()->back()->with('success', 'L\'étudiant ' . $eleveFullName . ' à été supprimer avec succès 🙆');
     }
 
     public function searchTuteurs(Request $request)

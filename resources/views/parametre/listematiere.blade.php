@@ -37,11 +37,39 @@
                                             <td>{{ $matiere->coefficient }}</td>
                                             <td>{{ $matiere->filiere->filiere }}</td>
                                             <td style="width: 130px;">
-                                                <a href="{{ route('supprimermatiere', $matiere->id) }}"
-                                                    class="btn btn-danger d-inline mt-1 delete"><i
+                                                <a href="#deleteEmployeeModal{{ $matiere->id }}"
+                                                    class="delete btn btn-danger d-inline mt-1" data-toggle="modal"><i
                                                         class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
+                                        <div id="deleteEmployeeModal{{ $matiere->id }}" class="modal fade">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content" style="background: white">
+                                                    <form action="{{ route('supprimermatiere', $matiere->id) }}">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title text-dark text-center">Suppression
+                                                                Matière
+                                                            </h4>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true">&times;</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p class="text-danger">Voulez-vous vraiment supprimer la
+                                                                matière <span
+                                                                    class="text-info">{{ $matiere->matiere }}</span> ?
+                                                            </p>
+                                                            <p class="text-warning"><small>Cette action est
+                                                                    irréverssible.</small></p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <input type="button" class="btn btn-default"
+                                                                data-dismiss="modal" value="Annuler">
+                                                            <button type="submit" class="btn btn-danger">supprimer</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endforeach
 
                                 </tbody>

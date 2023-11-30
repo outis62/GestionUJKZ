@@ -68,10 +68,13 @@ class TuteurController extends Controller
      */
     public function destroy(Tuteur $tuteur)
     {
+        $tuteurName = $tuteur->nom;
+        $tuteurPrenom = $tuteur->prenom;
+        $tuteurFullName = $tuteurName . '  ' . $tuteurPrenom;
         $tuteur->eleve()->delete();
         $tuteur->delete();
 
-        return redirect()->route('tuteur.index')->with('success', 'Tuteur supprimer avec succès 😓');
+        return redirect()->route('tuteur.index')->with('success', 'Le tuteur ' . $tuteurFullName . ' à été supprimer avec succès 😓');
     }
 
 }

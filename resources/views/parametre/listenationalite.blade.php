@@ -28,22 +28,45 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                        $compteur = 1;
-                                    @endphp
                                     @foreach ($nationalite as $nationalite)
                                         <tr>
-                                            <td>{{ $compteur }}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $nationalite->nationalite }}</td>
                                             <td style="width: 130px;">
-                                                <a href="{{ route('supprimernationalite', $nationalite->id) }}"
-                                                    class="btn btn-danger d-inline mt-1 delete"><i
+                                                <a href="#deleteEmployeeModal{{ $nationalite->id }}"
+                                                    class="delete btn btn-danger d-inline mt-1" data-toggle="modal"><i
                                                         class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
-                                        @php
-                                            $compteur++;
-                                        @endphp
+                                        <div id="deleteEmployeeModal{{ $nationalite->id }}" class="modal fade">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content" style="background: white">
+                                                    <form action="{{ route('supprimernationalite', $nationalite->id) }}">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title text-dark text-center">Suppression
+                                                                Nationalité
+                                                            </h4>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true">&times;</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p class="text-danger">Voulez-vous vraiment supprimer la
+                                                                nationalité <span
+                                                                    class="text-info">{{ $nationalite->nationalite }}</span>
+                                                                ?
+                                                            </p>
+                                                            <p class="text-warning"><small>Cette action est
+                                                                    irréverssible.</small></p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <input type="button" class="btn btn-default"
+                                                                data-dismiss="modal" value="Annuler">
+                                                            <button type="submit" class="btn btn-danger">supprimer</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endforeach
 
                                 </tbody>

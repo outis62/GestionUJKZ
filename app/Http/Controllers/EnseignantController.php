@@ -76,7 +76,10 @@ class EnseignantController extends Controller
      */
     public function destroy(Enseignant $enseignant)
     {
+        $enseignantName = $enseignant->nom;
+        $enseignantPrenom = $enseignant->prenom;
+        $enseignantFullName = $enseignantName . '  ' . $enseignantPrenom;
         $enseignant->delete();
-        return redirect()->back()->with('success', 'Enseignant supprimer avec succes 😓');
+        return redirect()->back()->with('success', 'L\'enseignant ' . $enseignantFullName . ' à été supprimer avec succès 😓');
     }
 }

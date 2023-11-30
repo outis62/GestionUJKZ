@@ -29,21 +29,44 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                        $compteur = 1;
-                                    @endphp
                                     @foreach ($anneeuniv as $anneeuniv)
                                         <tr>
-                                            <td>{{ $compteur }}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $anneeuniv->anneeuniversitaire }}</td>
                                             <td style="width: 130px;">
-                                                <a href="javascript:void(0);" class="btn btn-danger d-inline mt-1 delete"><i
+                                                <a href="#deleteEmployeeModal{{ $anneeuniv->id }}"
+                                                    class="delete btn btn-danger d-inline mt-1" data-toggle="modal"><i
                                                         class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
-                                        @php
-                                            $compteur++;
-                                        @endphp
+                                        <div id="deleteEmployeeModal{{ $anneeuniv->id }}" class="modal fade">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content" style="background: white">
+                                                    <form action="{{ route('supprimeranneeuniv', $anneeuniv->id) }}">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title text-dark">Suppression Année
+                                                                universitaire</h4>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true">&times;</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p class="text-danger">Voulez-vous vraiment supprimer
+                                                                l'année universitaire <span
+                                                                    class="text-info">{{ $anneeuniv->anneeuniversitaire }}</span>
+                                                                ?
+                                                            </p>
+                                                            <p class="text-warning"><small>Cette action est
+                                                                    irréverssible.</small></p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <input type="button" class="btn btn-default"
+                                                                data-dismiss="modal" value="Annuler">
+                                                            <button type="submit" class="btn btn-danger">supprimer</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endforeach
 
                                 </tbody>

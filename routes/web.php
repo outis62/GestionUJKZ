@@ -70,6 +70,10 @@ Route::middleware('auth')->group(function () {
     Route::get('supprimer/matière/{matiere}', [ParametreController::class, 'supprimermatiere'])->name('supprimermatiere');
     Route::get('supprimer/niveauetude/{niveauetude}', [ParametreController::class, 'supprimerniveau'])->name('supprimerniveau');
     Route::get('supprimer/nationalite/{nationalite}', [ParametreController::class, 'supprimernationalite'])->name('supprimernationalite');
+    Route::get('supprimer/anneeuniversitaire/{anneeuniversitaire}', [ParametreController::class, 'supprimeranneeuniv'])->name('supprimeranneeuniv');
+    Route::get('supprimer/genre/{genre}', [ParametreController::class, 'supprimergenre'])->name('supprimergenre');
+    Route::get('supprimer/cycle/{cycle}', [ParametreController::class, 'supprimercycle'])->name('supprimercycle');
+    Route::get('supprimer/semestre/{semestre}', [ParametreController::class, 'supprimersemestre'])->name('supprimersemestre');
     Route::post('AjoutNote', [EtudiantController::class, 'enregistrerNotes'])->name('enregistrerNotes');
     Route::resource('Eleve', 'App\Http\Controllers\EleveController');
     Route::get('/eleve/supprimer/{eleve}', [EleveController::class, 'destroy'])->name('supprimereleve');

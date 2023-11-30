@@ -28,21 +28,42 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                        $compteur = 1;
-                                    @endphp
                                     @foreach ($cycle as $cycle)
                                         <tr>
-                                            <td>{{ $compteur }}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $cycle->cycle }}</td>
                                             <td style="width: 130px;">
-                                                <a href="javascript:void(0);" class="btn btn-danger d-inline mt-1 delete"><i
+                                                <a href="#deleteEmployeeModal{{ $cycle->id }}"
+                                                    class="delete btn btn-danger d-inline mt-1" data-toggle="modal"><i
                                                         class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
-                                        @php
-                                            $compteur++;
-                                        @endphp
+                                        <div id="deleteEmployeeModal{{ $cycle->id }}" class="modal fade">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content" style="background: white">
+                                                    <form action="{{ route('supprimercycle', $cycle->id) }}">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title text-dark">Suppression Cycle</h4>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true">&times;</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p class="text-danger">Voulez-vous vraiment supprimer
+                                                                le cycle <span class="text-info">{{ $cycle->cycle }}</span>
+                                                                ?
+                                                            </p>
+                                                            <p class="text-warning"><small>Cette action est
+                                                                    irréverssible.</small></p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <input type="button" class="btn btn-default"
+                                                                data-dismiss="modal" value="Annuler">
+                                                            <button type="submit" class="btn btn-danger">supprimer</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endforeach
 
                                 </tbody>
